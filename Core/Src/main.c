@@ -64,8 +64,7 @@ static void MX_GPIO_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-  uint32_t i;
-  uint16_t leds;
+  uint16_t counter = 0;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -96,20 +95,16 @@ int main(void)
   {
     
     if(button_release(GPIOB,BTN1_Pin,0)){
-      HAL_GPIO_WritePin(GPIOA,leds,0);
-      switch (leds)
-      {
-      case(0):
-        leds = LED1_Pin;
-        break;
-      case(LED5_Pin):
-        leds = 0;
-        break;
-      default:
-        leds = leds << 1;
-        break;
-      }
-      HAL_GPIO_WritePin(GPIOA,leds,1);
+      counter++;
+        if(counter>31){
+          counter = 0;
+        }
+      
+      HAL_GPIO_WritePin(GPIOA,LED1_Pin, (counter & 0x01) ? 1 : 0);
+      HAL_GPIO_WritePin(GPIOA,LED2_Pin, (counter & 0x02) ? 1 : 0);
+      HAL_GPIO_WritePin(GPIOA,LED3_Pin, (counter & 0x04) ? 1 : 0);
+      HAL_GPIO_WritePin(GPIOA,LED4_Pin, (counter & 0x08) ? 1 : 0);
+      HAL_GPIO_WritePin(GPIOA,LED5_Pin, (counter & 0x10) ? 1 : 0);
     }
     HAL_GPIO_TogglePin(GPIOC,KIT_LED_Pin);
     HAL_Delay(405);
