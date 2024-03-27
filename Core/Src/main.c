@@ -32,6 +32,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define sound_speed = 34.3;
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -64,8 +65,10 @@ static void MX_GPIO_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
+  HAL_GPIO_WritePin(GPIOA, LED1_pin, 1);
+  
   uint64_t counter = 0;
-  uint64_t distance = 0;
+  double distance = 0;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -107,7 +110,20 @@ int main(void)
       HAL_Delay(1);
     }
     
-    
+    /*
+    Calcular a distância, considerando que distancia (m) = velocidade do som (m/s) * tempo (s)
+    transformar a velocidade do som em cm/s ----> v = 343 m/s = 34300 cm/s
+    transformar a velocidade do som em cm/ms ------> v = 34300 cm/s = 34300/1000 (cm/ms) = 34,3 cm/ms
+    dividir o tempo por 2 -----> t = tempo/2
+
+    dessa forma distancia (cm) = 17,15 (cm/ms) * tempo (ms)
+    */ 
+
+    distance = sound_speed * counter /2;
+
+    HAL_GPIO_WritePin(GPIOA, LED2_pin, (distance <= 2.0) ? 1 : 0);
+
+  
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
