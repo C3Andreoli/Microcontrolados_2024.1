@@ -66,10 +66,7 @@ static void MX_GPIO_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-  float sound_speed = 34.3;
   int counter = 0;
-  uint8_t buffer[64];
-  float distance = 0;
   int calculatedTime = 2;
   /* USER CODE END 1 */
 
@@ -137,23 +134,6 @@ int main(void)
       
     }
       
-    // HAL_GPIO_WritePin(GPIOA,LED1_Pin, 1);
-    
-    /*
-    Calcular a distância, considerando que distancia (m) = velocidade do som (m/s) * tempo (s)
-    transformar a velocidade do som em cm/s ----> v = 343 m/s = 34300 cm/s
-    transformar a velocidade do som em cm/ms ------> v = 34300 cm/s = 34300/1000 (cm/ms) = 34,3 cm/ms
-    dividir o tempo por 2 -----> t = tempo/2
-
-    dessa forma distancia (cm) = 17,15 (cm/ms) * tempo (ms)
-    */ 
-
-    // distance = sound_speed/(counter /2);
-
-    // HAL_GPIO_WritePin(GPIOA, LED2_Pin, 1);
-    
-    // CDC_Transmit_FS(buffer, sprintf((char *)buffer, "Ultima Contagem: %ld\r\n", counter));
-  
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
