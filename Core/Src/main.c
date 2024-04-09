@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "usb_device.h"
 #include "button.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -32,7 +33,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define sound_speed = 34.3;
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -65,10 +66,11 @@ static void MX_GPIO_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-  HAL_GPIO_WritePin(GPIOA, LED1_pin, 1);
-  
-  uint64_t counter = 0;
-  double distance = 0;
+  float sound_speed = 34.3;
+  int counter = 0;
+  uint8_t buffer[64];
+  float distance = 0;
+  int calculatedTime = 2;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -89,6 +91,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -100,15 +103,41 @@ int main(void)
     
     if(button_release(GPIOB,BTN1_Pin,0)){
       HAL_GPIO_WritePin(GPIOA,TRIG_Pin,1);
+      counter = 0;
+      calculatedTime = 0;
       HAL_Delay(120);
       HAL_GPIO_WritePin(GPIOA,TRIG_Pin,0);
-    }
+      while(!HAL_GPIO_ReadPin(GPIOA,ECHO_Pin))
+        {
 
-    while (HAL_GPIO_ReadPin(GPIOA,ECHO_Pin))
-    {
-      counter++;
-      HAL_Delay(1);
+        }
     }
+      while (HAL_GPIO_ReadPin(GPIOA,ECHO_Pin))
+      {
+        counter++;
+      }
+    calculatedTime = 4.53E-4 * counter + 0.0181;
+      
+    switch(calculatedTime){
+      case(2):
+        HAL_GPIO_WritePin(GPIOB,ledGreen_Pin,1);
+        HAL_GPIO_WritePin(GPIOB,ledRed_Pin,0);
+        HAL_GPIO_WritePin(GPIOB,ledYellow_Pin,0);
+        break;
+      case(1):
+        HAL_GPIO_WritePin(GPIOB,ledRed_Pin,0);
+        HAL_GPIO_WritePin(GPIOB,ledYellow_Pin,1);
+        HAL_GPIO_WritePin(GPIOB,ledGreen_Pin,1);
+        break;
+      case(0):
+        HAL_GPIO_WritePin(GPIOB,ledRed_Pin,1);
+        HAL_GPIO_WritePin(GPIOB,ledYellow_Pin,1);
+        HAL_GPIO_WritePin(GPIOB,ledGreen_Pin,1);
+        break;
+      
+    }
+      
+    // HAL_GPIO_WritePin(GPIOA,LED1_Pin, 1);
     
     /*
     Calcular a distância, considerando que distancia (m) = velocidade do som (m/s) * tempo (s)
@@ -119,10 +148,11 @@ int main(void)
     dessa forma distancia (cm) = 17,15 (cm/ms) * tempo (ms)
     */ 
 
-    distance = sound_speed * counter /2;
+    // distance = sound_speed/(counter /2);
 
-    HAL_GPIO_WritePin(GPIOA, LED2_pin, (distance <= 2.0) ? 1 : 0);
-
+    // HAL_GPIO_WritePin(GPIOA, LED2_Pin, 1);
+    
+    // CDC_Transmit_FS(buffer, sprintf((char *)buffer, "Ultima Contagem: %ld\r\n", counter));
   
     /* USER CODE END WHILE */
 
@@ -197,7 +227,10 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(KIT_LED_GPIO_Port, KIT_LED_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(TRIGGER_GPIO_Port, TRIGGER_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, TRIG_Pin|LED1_Pin|LED2_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, ledRed_Pin|ledYellow_Pin|ledGreen_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : KIT_LED_Pin */
   GPIO_InitStruct.Pin = KIT_LED_Pin;
@@ -212,12 +245,19 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(ECHO_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : TRIGGER_Pin */
-  GPIO_InitStruct.Pin = TRIGGER_Pin;
+  /*Configure GPIO pins : TRIG_Pin LED1_Pin LED2_Pin */
+  GPIO_InitStruct.Pin = TRIG_Pin|LED1_Pin|LED2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(TRIGGER_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : ledRed_Pin ledYellow_Pin ledGreen_Pin */
+  GPIO_InitStruct.Pin = ledRed_Pin|ledYellow_Pin|ledGreen_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pin : BTN1_Pin */
   GPIO_InitStruct.Pin = BTN1_Pin;

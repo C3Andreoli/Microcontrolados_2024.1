@@ -63,6 +63,16 @@ void Error_Handler(void);
 #define ECHO_GPIO_Port GPIOA
 #define TRIG_Pin GPIO_PIN_4
 #define TRIG_GPIO_Port GPIOA
+#define LED1_Pin GPIO_PIN_6
+#define LED1_GPIO_Port GPIOA
+#define LED2_Pin GPIO_PIN_7
+#define LED2_GPIO_Port GPIOA
+#define ledRed_Pin GPIO_PIN_12
+#define ledRed_GPIO_Port GPIOB
+#define ledYellow_Pin GPIO_PIN_13
+#define ledYellow_GPIO_Port GPIOB
+#define ledGreen_Pin GPIO_PIN_14
+#define ledGreen_GPIO_Port GPIOB
 #define BTN1_Pin GPIO_PIN_15
 #define BTN1_GPIO_Port GPIOB
 
