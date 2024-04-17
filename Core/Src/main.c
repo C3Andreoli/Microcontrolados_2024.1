@@ -19,7 +19,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "button.h"
-
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -40,6 +39,7 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+TIM_HandleTypeDef htim4;
 
 /* USER CODE BEGIN PV */
 
@@ -48,13 +48,14 @@
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_TIM4_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+uint16_t counter = 32;
 /* USER CODE END 0 */
 
 /**
@@ -64,7 +65,7 @@ static void MX_GPIO_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-  uint16_t counter = 0;
+  
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -85,34 +86,24 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
-
+  HAL_TIM_Base_Start_IT(&htim4);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    
-    if(button_release(GPIOB,BTN1_Pin,0)){
-      counter++;
-        if(counter>31){
-          counter = 0;
-        }
-      
-      HAL_GPIO_WritePin(GPIOA,LED1_Pin, (counter & 0x01) ? 1 : 0);
-      HAL_GPIO_WritePin(GPIOA,LED2_Pin, (counter & 0x02) ? 1 : 0);
-      HAL_GPIO_WritePin(GPIOA,LED3_Pin, (counter & 0x04) ? 1 : 0);
-      HAL_GPIO_WritePin(GPIOA,LED4_Pin, (counter & 0x08) ? 1 : 0);
-      HAL_GPIO_WritePin(GPIOA,LED5_Pin, (counter & 0x10) ? 1 : 0);
-    }
     HAL_GPIO_TogglePin(GPIOC,KIT_LED_Pin);
-    HAL_Delay(405);
-    
-    /* USER CODE END WHILE */
+    HAL_Delay(200);
 
-    /* USER CODE BEGIN 3 */
+    if(button_release(GPIOB,BTN1_Pin,0)){
+      htim4.Instance->ARR += 1030;
+    }
   }
+ 
+
   /* USER CODE END 3 */
 }
 
@@ -159,6 +150,51 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+}
+
+/**
+  * @brief TIM4 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM4_Init(void)
+{
+
+  /* USER CODE BEGIN TIM4_Init 0 */
+
+  /* USER CODE END TIM4_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM4_Init 1 */
+
+  /* USER CODE END TIM4_Init 1 */
+  htim4.Instance = TIM4;
+  htim4.Init.Prescaler = 9600-1;
+  htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim4.Init.Period = 1030;
+  htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim4.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim4) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim4, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim4, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM4_Init 2 */
+
+  /* USER CODE END TIM4_Init 2 */
+
 }
 
 /**
@@ -212,6 +248,18 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+void HAL_TIM_PeriodElapsedCallback (TIM_HandleTypeDef * htim){
+  counter--;
+  
+  HAL_GPIO_WritePin(GPIOA,LED1_Pin, (counter & 0x01) ? 1 : 0);
+  HAL_GPIO_WritePin(GPIOA,LED2_Pin, (counter & 0x02) ? 1 : 0);
+  HAL_GPIO_WritePin(GPIOA,LED3_Pin, (counter & 0x04) ? 1 : 0);
+  HAL_GPIO_WritePin(GPIOA,LED4_Pin, (counter & 0x08) ? 1 : 0);
+  HAL_GPIO_WritePin(GPIOA,LED5_Pin, (counter & 0x10) ? 1 : 0);
+  if(counter==0){
+    counter = 32;
+  }
+}
 
 /* USER CODE END 4 */
 
