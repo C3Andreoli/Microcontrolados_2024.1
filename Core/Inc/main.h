@@ -59,20 +59,24 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define KIT_LED_Pin GPIO_PIN_13
 #define KIT_LED_GPIO_Port GPIOC
-#define LED1_Pin GPIO_PIN_3
-#define LED1_GPIO_Port GPIOA
-#define LED2_Pin GPIO_PIN_4
-#define LED2_GPIO_Port GPIOA
-#define LED3_Pin GPIO_PIN_5
-#define LED3_GPIO_Port GPIOA
-#define LED4_Pin GPIO_PIN_6
-#define LED4_GPIO_Port GPIOA
-#define LED5_Pin GPIO_PIN_7
-#define LED5_GPIO_Port GPIOA
-#define BTN2_Pin GPIO_PIN_12
-#define BTN2_GPIO_Port GPIOB
-#define BTN1_Pin GPIO_PIN_15
-#define BTN1_GPIO_Port GPIOB
+#define LED_1_Pin GPIO_PIN_3
+#define LED_1_GPIO_Port GPIOA
+#define LED_2_Pin GPIO_PIN_4
+#define LED_2_GPIO_Port GPIOA
+#define LED_3_Pin GPIO_PIN_5
+#define LED_3_GPIO_Port GPIOA
+#define LED_4_Pin GPIO_PIN_6
+#define LED_4_GPIO_Port GPIOA
+#define LED_5_Pin GPIO_PIN_7
+#define LED_5_GPIO_Port GPIOA
+#define BUTTON_2_Pin GPIO_PIN_12
+#define BUTTON_2_GPIO_Port GPIOB
+#define HCSR04_TRIGGER_Pin GPIO_PIN_13
+#define HCSR04_TRIGGER_GPIO_Port GPIOB
+#define BUTTON_1_Pin GPIO_PIN_15
+#define BUTTON_1_GPIO_Port GPIOB
+#define HCSR04_ECHO_Pin GPIO_PIN_6
+#define HCSR04_ECHO_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 
