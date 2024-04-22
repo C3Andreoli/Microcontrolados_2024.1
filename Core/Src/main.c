@@ -99,7 +99,7 @@ int main(void)
     HAL_GPIO_TogglePin(GPIOC,KIT_LED_Pin);
     HAL_Delay(200);
 
-    if(button_release(GPIOB,BTN1_Pin,0)){
+    if(button_release(GPIOB,BTN1_Pin,0) & TIM4->ARR < (30*1030)){
       htim4.Instance->ARR += 1030;
   
     }
