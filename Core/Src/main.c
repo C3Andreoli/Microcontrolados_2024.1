@@ -90,8 +90,8 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
-  HAL_TIM_IC_Start(&htim4,TIM_CHANNEL_1);
-  HAL_TIM_IC_Start_IT(&htim4,TIM_CHANNEL_2);
+  // HAL_TIM_IC_Start(&htim4,TIM_CHANNEL_1);
+  // HAL_TIM_IC_Start_IT(&htim4,TIM_CHANNEL_2);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -100,22 +100,73 @@ int main(void)
   {
     if (!HAL_GPIO_ReadPin(BUTTON_1_GPIO_Port, BUTTON_1_Pin))
     {
-      while (!HAL_GPIO_ReadPin(BUTTON_1_GPIO_Port, BUTTON_1_Pin));
+      while (!HAL_GPIO_ReadPin(BUTTON_1_GPIO_Port, BUTTON_1_Pin)){}
+      HAL_GPIO_WritePin(HCSR04_TRIGGER_GPIO_Port,HCSR04_TRIGGER_Pin, 1);
+      HAL_Delay(1);
+      htim4.Instance->CNT = 0;
+      HAL_TIM_IC_Start(&htim4, TIM_CHANNEL_1);
+      HAL_TIM_IC_Start_IT(&htim4, TIM_CHANNEL_2);
+      gElapsed = 0;
+      timeout = 0;
+      HAL_GPIO_WritePin(HCSR04_TRIGGER_GPIO_Port,HCSR04_TRIGGER_Pin, 0);
+      while((gElapsed==0)&&(timeout<100000))
+      {
+        timeout++;
+      } /* Aguarda até 10000 ticks*/
+      
+      d_mm = gElapsed * 0.343 * 0.5 ;
+
+      if(d_mm>0 && d_mm < 22){
+        HAL_GPIO_WritePin(GPIOA,LED_1_Pin, 1);
+        HAL_GPIO_WritePin(GPIOA,LED_2_Pin, 1);
+        HAL_GPIO_WritePin(GPIOA,LED_3_Pin, 1);
+        HAL_GPIO_WritePin(GPIOA,LED_4_Pin, 1);
+        HAL_GPIO_WritePin(GPIOA,LED_5_Pin, 1);
+      }
+      else if(d_mm>22 && d_mm<30.5){
+        HAL_GPIO_WritePin(GPIOA,LED_1_Pin, 1);
+        HAL_GPIO_WritePin(GPIOA,LED_2_Pin, 1);
+        HAL_GPIO_WritePin(GPIOA,LED_3_Pin, 1);
+        HAL_GPIO_WritePin(GPIOA,LED_4_Pin, 1);
+        HAL_GPIO_WritePin(GPIOA,LED_5_Pin, 0);
+      }
+      else if(d_mm>30.5 && d_mm<60.5){
+        HAL_GPIO_WritePin(GPIOA,LED_1_Pin, 1);
+        HAL_GPIO_WritePin(GPIOA,LED_2_Pin, 1);
+        HAL_GPIO_WritePin(GPIOA,LED_3_Pin, 1);
+        HAL_GPIO_WritePin(GPIOA,LED_4_Pin, 0);
+        HAL_GPIO_WritePin(GPIOA,LED_5_Pin, 0);
+        
+      }
+      else if(d_mm>60.5 && d_mm<100.5){
+        HAL_GPIO_WritePin(GPIOA,LED_1_Pin, 1);
+        HAL_GPIO_WritePin(GPIOA,LED_2_Pin, 1);
+        HAL_GPIO_WritePin(GPIOA,LED_3_Pin, 0);
+        HAL_GPIO_WritePin(GPIOA,LED_4_Pin, 0);
+        HAL_GPIO_WritePin(GPIOA,LED_5_Pin, 0);
+        
+      }
+      else if(d_mm>100.5 && d_mm<150.5){
+       
+        HAL_GPIO_WritePin(GPIOA,LED_1_Pin, 1);
+        HAL_GPIO_WritePin(GPIOA,LED_2_Pin, 0);
+        HAL_GPIO_WritePin(GPIOA,LED_3_Pin, 0);
+        HAL_GPIO_WritePin(GPIOA,LED_4_Pin, 0);
+        HAL_GPIO_WritePin(GPIOA,LED_5_Pin, 0); 
+      }
+      else if(d_mm>150.5){
+        HAL_GPIO_WritePin(GPIOA,LED_1_Pin, 0);
+        HAL_GPIO_WritePin(GPIOA,LED_2_Pin, 0);
+        HAL_GPIO_WritePin(GPIOA,LED_3_Pin, 0);
+        HAL_GPIO_WritePin(GPIOA,LED_4_Pin, 0);
+        HAL_GPIO_WritePin(GPIOA,LED_5_Pin, 0);
+      }
+      HAL_Delay(5);
     }
-    HAL_GPIO_WritePin(HCSR04_TRIGGER_GPIO_Port,HCSR04_TRIGGER_Pin, 1);
-    HAL_Delay(1);
-    htim4.Instance->CNT = 0;
-    HAL_TIM_IC_Start(&htim4, TIM_CHANNEL_1);
-    HAL_TIM_IC_Start_IT(&htim4, TIM_CHANNEL_2);
-    gElapsed = 0;
-    timeout = 0;
-    HAL_GPIO_WritePin(HCSR04_TRIGGER_GPIO_Port,HCSR04_TRIGGER_Pin, 0);
-    while((gElapsed==0)&&(timeout<100000))
-    {
-      timeout++;
-    }    
-    //d_mm = ;
+    
     HAL_Delay(50);
+ 
+    
   }
     /* USER CODE END WHILE */
 
@@ -301,7 +352,7 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
   { 
     if (htim4.Channel == HAL_TIM_ACTIVE_CHANNEL_2)
     {   
-      gElapsed = htim4.Instance->CCR2 - htim4.Instance->CCR1;   
+      gElapsed = htim4.Instance->CCR2 - htim4.Instance->CCR1; /* Captura final - Inicial */
       HAL_TIM_IC_Stop(&htim4, TIM_CHANNEL_1);
       HAL_TIM_IC_Stop_IT(&htim4, TIM_CHANNEL_2);       
     }

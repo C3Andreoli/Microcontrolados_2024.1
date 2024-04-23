@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 1
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -28,20 +28,23 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 1
   25      00000000 
   25      00000000 
   25      00000000 
-  26              		.global	counter
-  27              		.section	.data.counter,"aw"
-  28              		.align	1
-  31              	counter:
-  32 0000 2000     		.short	32
-  33              		.section	.text.main,"ax",%progbits
-  34              		.align	1
-  35              		.global	main
-  36              		.syntax unified
-  37              		.thumb
-  38              		.thumb_func
-  40              	main:
-  41              	.LFB130:
-  42              		.file 1 "Core/Src/main.c"
+  26              		.global	gElapsed
+  27              		.section	.bss.gElapsed,"aw",%nobits
+  28              		.align	2
+  31              	gElapsed:
+  32 0000 00000000 		.space	4
+  33              		.global	__aeabi_ui2d
+  34              		.global	__aeabi_dmul
+  35              		.global	__aeabi_d2uiz
+  36              		.section	.text.main,"ax",%progbits
+  37              		.align	1
+  38              		.global	main
+  39              		.syntax unified
+  40              		.thumb
+  41              		.thumb_func
+  43              	main:
+  44              	.LFB130:
+  45              		.file 1 "Core/Src/main.c"
    1:Core/Src/main.c **** /* USER CODE BEGIN Header */
    2:Core/Src/main.c **** /**
    3:Core/Src/main.c ****   ******************************************************************************
@@ -55,12 +58,12 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 1
   11:Core/Src/main.c ****   *
   12:Core/Src/main.c ****   * This software is licensed under terms that can be found in the LICENSE file
   13:Core/Src/main.c ****   * in the root directory of this software component.
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 2
+
+
   14:Core/Src/main.c ****   * If no LICENSE file comes with this software, it is provided AS-IS.
   15:Core/Src/main.c ****   *
   16:Core/Src/main.c ****   ******************************************************************************
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 2
-
-
   17:Core/Src/main.c ****   */
   18:Core/Src/main.c **** /* USER CODE END Header */
   19:Core/Src/main.c **** /* Includes ------------------------------------------------------------------*/
@@ -68,7 +71,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 1
   21:Core/Src/main.c **** 
   22:Core/Src/main.c **** /* Private includes ----------------------------------------------------------*/
   23:Core/Src/main.c **** /* USER CODE BEGIN Includes */
-  24:Core/Src/main.c **** #include "button.h"
+  24:Core/Src/main.c **** 
   25:Core/Src/main.c **** /* USER CODE END Includes */
   26:Core/Src/main.c **** 
   27:Core/Src/main.c **** /* Private typedef -----------------------------------------------------------*/
@@ -89,7 +92,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 1
   42:Core/Src/main.c **** TIM_HandleTypeDef htim4;
   43:Core/Src/main.c **** 
   44:Core/Src/main.c **** /* USER CODE BEGIN PV */
-  45:Core/Src/main.c **** 
+  45:Core/Src/main.c **** volatile uint32_t gElapsed;
   46:Core/Src/main.c **** /* USER CODE END PV */
   47:Core/Src/main.c **** 
   48:Core/Src/main.c **** /* Private function prototypes -----------------------------------------------*/
@@ -102,7 +105,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 1
   55:Core/Src/main.c **** 
   56:Core/Src/main.c **** /* Private user code ---------------------------------------------------------*/
   57:Core/Src/main.c **** /* USER CODE BEGIN 0 */
-  58:Core/Src/main.c **** uint16_t counter = 32;
+  58:Core/Src/main.c **** 
   59:Core/Src/main.c **** /* USER CODE END 0 */
   60:Core/Src/main.c **** 
   61:Core/Src/main.c **** /**
@@ -111,932 +114,1354 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 1
   64:Core/Src/main.c ****   */
   65:Core/Src/main.c **** int main(void)
   66:Core/Src/main.c **** {
-  43              		.loc 1 66 1
-  44              		.cfi_startproc
-  45              		@ args = 0, pretend = 0, frame = 0
-  46              		@ frame_needed = 1, uses_anonymous_args = 0
-  47 0000 80B5     		push	{r7, lr}
-  48              	.LCFI0:
-  49              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 3
+  46              		.loc 1 66 1
+  47              		.cfi_startproc
+  48              		@ args = 0, pretend = 0, frame = 8
+  49              		@ frame_needed = 1, uses_anonymous_args = 0
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 3
 
 
-  50              		.cfi_offset 7, -8
-  51              		.cfi_offset 14, -4
-  52 0002 00AF     		add	r7, sp, #0
-  53              	.LCFI1:
-  54              		.cfi_def_cfa_register 7
+  50 0000 80B5     		push	{r7, lr}
+  51              	.LCFI0:
+  52              		.cfi_def_cfa_offset 8
+  53              		.cfi_offset 7, -8
+  54              		.cfi_offset 14, -4
+  55 0002 82B0     		sub	sp, sp, #8
+  56              	.LCFI1:
+  57              		.cfi_def_cfa_offset 16
+  58 0004 00AF     		add	r7, sp, #0
+  59              	.LCFI2:
+  60              		.cfi_def_cfa_register 7
   67:Core/Src/main.c ****   /* USER CODE BEGIN 1 */
-  68:Core/Src/main.c ****   
-  69:Core/Src/main.c ****   /* USER CODE END 1 */
-  70:Core/Src/main.c **** 
-  71:Core/Src/main.c ****   /* MCU Configuration--------------------------------------------------------*/
+  68:Core/Src/main.c ****   uint32_t i;
+  69:Core/Src/main.c ****   volatile uint32_t d_mm;
+  70:Core/Src/main.c ****   uint32_t timeout;
+  71:Core/Src/main.c ****   /* USER CODE END 1 */
   72:Core/Src/main.c **** 
-  73:Core/Src/main.c ****   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  74:Core/Src/main.c ****   HAL_Init();
-  55              		.loc 1 74 3
-  56 0004 FFF7FEFF 		bl	HAL_Init
-  75:Core/Src/main.c **** 
-  76:Core/Src/main.c ****   /* USER CODE BEGIN Init */
+  73:Core/Src/main.c ****   /* MCU Configuration--------------------------------------------------------*/
+  74:Core/Src/main.c **** 
+  75:Core/Src/main.c ****   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+  76:Core/Src/main.c ****   HAL_Init();
+  61              		.loc 1 76 3
+  62 0006 FFF7FEFF 		bl	HAL_Init
   77:Core/Src/main.c **** 
-  78:Core/Src/main.c ****   /* USER CODE END Init */
+  78:Core/Src/main.c ****   /* USER CODE BEGIN Init */
   79:Core/Src/main.c **** 
-  80:Core/Src/main.c ****   /* Configure the system clock */
-  81:Core/Src/main.c ****   SystemClock_Config();
-  57              		.loc 1 81 3
-  58 0008 FFF7FEFF 		bl	SystemClock_Config
-  82:Core/Src/main.c **** 
-  83:Core/Src/main.c ****   /* USER CODE BEGIN SysInit */
+  80:Core/Src/main.c ****   /* USER CODE END Init */
+  81:Core/Src/main.c **** 
+  82:Core/Src/main.c ****   /* Configure the system clock */
+  83:Core/Src/main.c ****   SystemClock_Config();
+  63              		.loc 1 83 3
+  64 000a FFF7FEFF 		bl	SystemClock_Config
   84:Core/Src/main.c **** 
-  85:Core/Src/main.c ****   /* USER CODE END SysInit */
+  85:Core/Src/main.c ****   /* USER CODE BEGIN SysInit */
   86:Core/Src/main.c **** 
-  87:Core/Src/main.c ****   /* Initialize all configured peripherals */
-  88:Core/Src/main.c ****   MX_GPIO_Init();
-  59              		.loc 1 88 3
-  60 000c FFF7FEFF 		bl	MX_GPIO_Init
-  89:Core/Src/main.c ****   MX_TIM4_Init();
-  61              		.loc 1 89 3
-  62 0010 FFF7FEFF 		bl	MX_TIM4_Init
-  90:Core/Src/main.c ****   /* USER CODE BEGIN 2 */
-  91:Core/Src/main.c ****   HAL_TIM_Base_Start_IT(&htim4);
-  63              		.loc 1 91 3
-  64 0014 1B48     		ldr	r0, .L5
-  65 0016 FFF7FEFF 		bl	HAL_TIM_Base_Start_IT
-  66              	.L4:
-  92:Core/Src/main.c ****   /* USER CODE END 2 */
-  93:Core/Src/main.c **** 
-  94:Core/Src/main.c ****   /* Infinite loop */
-  95:Core/Src/main.c ****   /* USER CODE BEGIN WHILE */
-  96:Core/Src/main.c ****   while (1)
-  97:Core/Src/main.c ****   {
-  98:Core/Src/main.c ****     /* USER CODE END WHILE */
-  99:Core/Src/main.c ****     HAL_GPIO_TogglePin(GPIOC,KIT_LED_Pin);
-  67              		.loc 1 99 5
-  68 001a 4FF40051 		mov	r1, #8192
-  69 001e 1A48     		ldr	r0, .L5+4
-  70 0020 FFF7FEFF 		bl	HAL_GPIO_TogglePin
- 100:Core/Src/main.c ****     HAL_Delay(200);
-  71              		.loc 1 100 5
-  72 0024 C820     		movs	r0, #200
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 4
+  87:Core/Src/main.c ****   /* USER CODE END SysInit */
+  88:Core/Src/main.c **** 
+  89:Core/Src/main.c ****   /* Initialize all configured peripherals */
+  90:Core/Src/main.c ****   MX_GPIO_Init();
+  65              		.loc 1 90 3
+  66 000e FFF7FEFF 		bl	MX_GPIO_Init
+  91:Core/Src/main.c ****   MX_TIM4_Init();
+  67              		.loc 1 91 3
+  68 0012 FFF7FEFF 		bl	MX_TIM4_Init
+  69              	.L13:
+  92:Core/Src/main.c ****   /* USER CODE BEGIN 2 */
+  93:Core/Src/main.c ****   // HAL_TIM_IC_Start(&htim4,TIM_CHANNEL_1);
+  94:Core/Src/main.c ****   // HAL_TIM_IC_Start_IT(&htim4,TIM_CHANNEL_2);
+  95:Core/Src/main.c ****   /* USER CODE END 2 */
+  96:Core/Src/main.c **** 
+  97:Core/Src/main.c ****   /* Infinite loop */
+  98:Core/Src/main.c ****   /* USER CODE BEGIN WHILE */
+  99:Core/Src/main.c ****   while (1)
+ 100:Core/Src/main.c ****   {
+ 101:Core/Src/main.c ****     if (!HAL_GPIO_ReadPin(BUTTON_1_GPIO_Port, BUTTON_1_Pin))
+  70              		.loc 1 101 10
+  71 0016 4FF40041 		mov	r1, #32768
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 4
 
 
-  73 0026 FFF7FEFF 		bl	HAL_Delay
- 101:Core/Src/main.c **** 
- 102:Core/Src/main.c ****     if(button_release(GPIOB,BTN1_Pin,0)){
-  74              		.loc 1 102 8
-  75 002a 0022     		movs	r2, #0
-  76 002c 4FF40041 		mov	r1, #32768
-  77 0030 1648     		ldr	r0, .L5+8
-  78 0032 FFF7FEFF 		bl	button_release
-  79 0036 0346     		mov	r3, r0
-  80              		.loc 1 102 7
-  81 0038 002B     		cmp	r3, #0
-  82 003a 07D0     		beq	.L2
- 103:Core/Src/main.c ****       htim4.Instance->ARR += 1030;
-  83              		.loc 1 103 12
-  84 003c 114B     		ldr	r3, .L5
-  85 003e 1B68     		ldr	r3, [r3]
-  86              		.loc 1 103 27
-  87 0040 DA6A     		ldr	r2, [r3, #44]
-  88              		.loc 1 103 12
-  89 0042 104B     		ldr	r3, .L5
-  90 0044 1B68     		ldr	r3, [r3]
-  91              		.loc 1 103 27
-  92 0046 02F20642 		addw	r2, r2, #1030
-  93 004a DA62     		str	r2, [r3, #44]
-  94              	.L2:
- 104:Core/Src/main.c ****   
- 105:Core/Src/main.c ****     }
- 106:Core/Src/main.c ****     if(button_release(GPIOB,BTN2_Pin,0) & TIM4->ARR >0){
-  95              		.loc 1 106 8
-  96 004c 0022     		movs	r2, #0
-  97 004e 4FF48051 		mov	r1, #4096
-  98 0052 0E48     		ldr	r0, .L5+8
-  99 0054 FFF7FEFF 		bl	button_release
- 100 0058 0346     		mov	r3, r0
- 101 005a 1A46     		mov	r2, r3
- 102              		.loc 1 106 47
- 103 005c 0C4B     		ldr	r3, .L5+12
- 104 005e DB6A     		ldr	r3, [r3, #44]
- 105              		.loc 1 106 53
- 106 0060 002B     		cmp	r3, #0
- 107 0062 14BF     		ite	ne
- 108 0064 0123     		movne	r3, #1
- 109 0066 0023     		moveq	r3, #0
- 110 0068 DBB2     		uxtb	r3, r3
- 111              		.loc 1 106 41
- 112 006a 1340     		ands	r3, r3, r2
- 113              		.loc 1 106 7
- 114 006c 002B     		cmp	r3, #0
- 115 006e D4D0     		beq	.L4
- 107:Core/Src/main.c ****       htim4.Instance->ARR -= 1030;
- 116              		.loc 1 107 12
- 117 0070 044B     		ldr	r3, .L5
- 118 0072 1B68     		ldr	r3, [r3]
- 119              		.loc 1 107 27
- 120 0074 DA6A     		ldr	r2, [r3, #44]
- 121              		.loc 1 107 12
- 122 0076 034B     		ldr	r3, .L5
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 5
+  72 001a 8F48     		ldr	r0, .L14+8
+  73 001c FFF7FEFF 		bl	HAL_GPIO_ReadPin
+  74 0020 0346     		mov	r3, r0
+  75              		.loc 1 101 8
+  76 0022 002B     		cmp	r3, #0
+  77 0024 40F00F81 		bne	.L2
+ 102:Core/Src/main.c ****     {
+ 103:Core/Src/main.c ****       while (!HAL_GPIO_ReadPin(BUTTON_1_GPIO_Port, BUTTON_1_Pin)){}
+  78              		.loc 1 103 13
+  79 0028 00BF     		nop
+  80              	.L3:
+  81              		.loc 1 103 15 discriminator 1
+  82 002a 4FF40041 		mov	r1, #32768
+  83 002e 8A48     		ldr	r0, .L14+8
+  84 0030 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+  85 0034 0346     		mov	r3, r0
+  86              		.loc 1 103 14 discriminator 1
+  87 0036 002B     		cmp	r3, #0
+  88 0038 F7D0     		beq	.L3
+ 104:Core/Src/main.c ****       HAL_GPIO_WritePin(HCSR04_TRIGGER_GPIO_Port,HCSR04_TRIGGER_Pin, 1);
+  89              		.loc 1 104 7
+  90 003a 0122     		movs	r2, #1
+  91 003c 4FF40051 		mov	r1, #8192
+  92 0040 8548     		ldr	r0, .L14+8
+  93 0042 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 105:Core/Src/main.c ****       HAL_Delay(1);
+  94              		.loc 1 105 7
+  95 0046 0120     		movs	r0, #1
+  96 0048 FFF7FEFF 		bl	HAL_Delay
+ 106:Core/Src/main.c ****       htim4.Instance->CNT = 0;
+  97              		.loc 1 106 12
+  98 004c 834B     		ldr	r3, .L14+12
+  99 004e 1B68     		ldr	r3, [r3]
+ 100              		.loc 1 106 27
+ 101 0050 0022     		movs	r2, #0
+ 102 0052 5A62     		str	r2, [r3, #36]
+ 107:Core/Src/main.c ****       HAL_TIM_IC_Start(&htim4, TIM_CHANNEL_1);
+ 103              		.loc 1 107 7
+ 104 0054 0021     		movs	r1, #0
+ 105 0056 8148     		ldr	r0, .L14+12
+ 106 0058 FFF7FEFF 		bl	HAL_TIM_IC_Start
+ 108:Core/Src/main.c ****       HAL_TIM_IC_Start_IT(&htim4, TIM_CHANNEL_2);
+ 107              		.loc 1 108 7
+ 108 005c 0421     		movs	r1, #4
+ 109 005e 7F48     		ldr	r0, .L14+12
+ 110 0060 FFF7FEFF 		bl	HAL_TIM_IC_Start_IT
+ 109:Core/Src/main.c ****       gElapsed = 0;
+ 111              		.loc 1 109 16
+ 112 0064 7E4B     		ldr	r3, .L14+16
+ 113 0066 0022     		movs	r2, #0
+ 114 0068 1A60     		str	r2, [r3]
+ 110:Core/Src/main.c ****       timeout = 0;
+ 115              		.loc 1 110 15
+ 116 006a 0023     		movs	r3, #0
+ 117 006c 7B60     		str	r3, [r7, #4]
+ 111:Core/Src/main.c ****       HAL_GPIO_WritePin(HCSR04_TRIGGER_GPIO_Port,HCSR04_TRIGGER_Pin, 0);
+ 118              		.loc 1 111 7
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 5
 
 
- 123 0078 1B68     		ldr	r3, [r3]
- 124              		.loc 1 107 27
- 125 007a A2F20642 		subw	r2, r2, #1030
- 126 007e DA62     		str	r2, [r3, #44]
-  99:Core/Src/main.c ****     HAL_Delay(200);
- 127              		.loc 1 99 5
- 128 0080 CBE7     		b	.L4
- 129              	.L6:
- 130 0082 00BF     		.align	2
- 131              	.L5:
- 132 0084 00000000 		.word	htim4
- 133 0088 00080240 		.word	1073874944
- 134 008c 00040240 		.word	1073873920
- 135 0090 00080040 		.word	1073743872
- 136              		.cfi_endproc
- 137              	.LFE130:
- 139              		.section	.text.SystemClock_Config,"ax",%progbits
- 140              		.align	1
- 141              		.global	SystemClock_Config
- 142              		.syntax unified
- 143              		.thumb
- 144              		.thumb_func
- 146              	SystemClock_Config:
- 147              	.LFB131:
- 108:Core/Src/main.c ****     }
- 109:Core/Src/main.c **** 
- 110:Core/Src/main.c ****     /* USER CODE BEGIN 3 */
- 111:Core/Src/main.c ****   }
- 112:Core/Src/main.c ****   /* USER CODE END 3 */
- 113:Core/Src/main.c **** }
- 114:Core/Src/main.c **** 
- 115:Core/Src/main.c **** /**
- 116:Core/Src/main.c ****   * @brief System Clock Configuration
- 117:Core/Src/main.c ****   * @retval None
- 118:Core/Src/main.c ****   */
- 119:Core/Src/main.c **** void SystemClock_Config(void)
- 120:Core/Src/main.c **** {
- 148              		.loc 1 120 1
- 149              		.cfi_startproc
- 150              		@ args = 0, pretend = 0, frame = 80
- 151              		@ frame_needed = 1, uses_anonymous_args = 0
- 152 0000 80B5     		push	{r7, lr}
- 153              	.LCFI2:
- 154              		.cfi_def_cfa_offset 8
- 155              		.cfi_offset 7, -8
- 156              		.cfi_offset 14, -4
- 157 0002 94B0     		sub	sp, sp, #80
- 158              	.LCFI3:
- 159              		.cfi_def_cfa_offset 88
- 160 0004 00AF     		add	r7, sp, #0
- 161              	.LCFI4:
- 162              		.cfi_def_cfa_register 7
- 121:Core/Src/main.c ****   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
- 163              		.loc 1 121 22
- 164 0006 07F12003 		add	r3, r7, #32
- 165 000a 3022     		movs	r2, #48
- 166 000c 0021     		movs	r1, #0
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 6
+ 119 006e 0022     		movs	r2, #0
+ 120 0070 4FF40051 		mov	r1, #8192
+ 121 0074 7848     		ldr	r0, .L14+8
+ 122 0076 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 112:Core/Src/main.c ****       while((gElapsed==0)&&(timeout<100000))
+ 123              		.loc 1 112 12
+ 124 007a 02E0     		b	.L4
+ 125              	.L6:
+ 113:Core/Src/main.c ****       {
+ 114:Core/Src/main.c ****         timeout++;
+ 126              		.loc 1 114 16
+ 127 007c 7B68     		ldr	r3, [r7, #4]
+ 128 007e 0133     		adds	r3, r3, #1
+ 129 0080 7B60     		str	r3, [r7, #4]
+ 130              	.L4:
+ 112:Core/Src/main.c ****       while((gElapsed==0)&&(timeout<100000))
+ 131              		.loc 1 112 22
+ 132 0082 774B     		ldr	r3, .L14+16
+ 133 0084 1B68     		ldr	r3, [r3]
+ 112:Core/Src/main.c ****       while((gElapsed==0)&&(timeout<100000))
+ 134              		.loc 1 112 26
+ 135 0086 002B     		cmp	r3, #0
+ 136 0088 03D1     		bne	.L5
+ 112:Core/Src/main.c ****       while((gElapsed==0)&&(timeout<100000))
+ 137              		.loc 1 112 26 is_stmt 0 discriminator 1
+ 138 008a 7B68     		ldr	r3, [r7, #4]
+ 139 008c 754A     		ldr	r2, .L14+20
+ 140 008e 9342     		cmp	r3, r2
+ 141 0090 F4D9     		bls	.L6
+ 142              	.L5:
+ 115:Core/Src/main.c ****       } /* Aguarda até 10000 ticks*/
+ 116:Core/Src/main.c ****       
+ 117:Core/Src/main.c ****       d_mm = gElapsed * 0.343 * 0.5 ;
+ 143              		.loc 1 117 23 is_stmt 1
+ 144 0092 734B     		ldr	r3, .L14+16
+ 145 0094 1B68     		ldr	r3, [r3]
+ 146 0096 1846     		mov	r0, r3
+ 147 0098 FFF7FEFF 		bl	__aeabi_ui2d
+ 148 009c 6CA3     		adr	r3, .L14
+ 149 009e D3E90023 		ldrd	r2, [r3]
+ 150 00a2 FFF7FEFF 		bl	__aeabi_dmul
+ 151 00a6 0246     		mov	r2, r0
+ 152 00a8 0B46     		mov	r3, r1
+ 153 00aa 1046     		mov	r0, r2
+ 154 00ac 1946     		mov	r1, r3
+ 155              		.loc 1 117 31
+ 156 00ae 4FF00002 		mov	r2, #0
+ 157 00b2 6D4B     		ldr	r3, .L14+24
+ 158 00b4 FFF7FEFF 		bl	__aeabi_dmul
+ 159 00b8 0246     		mov	r2, r0
+ 160 00ba 0B46     		mov	r3, r1
+ 161              		.loc 1 117 12
+ 162 00bc 1046     		mov	r0, r2
+ 163 00be 1946     		mov	r1, r3
+ 164 00c0 FFF7FEFF 		bl	__aeabi_d2uiz
+ 165 00c4 0346     		mov	r3, r0
+ 166 00c6 3B60     		str	r3, [r7]
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 6
 
 
- 167 000e 1846     		mov	r0, r3
- 168 0010 FFF7FEFF 		bl	memset
- 122:Core/Src/main.c ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
- 169              		.loc 1 122 22
- 170 0014 07F10C03 		add	r3, r7, #12
- 171 0018 0022     		movs	r2, #0
- 172 001a 1A60     		str	r2, [r3]
- 173 001c 5A60     		str	r2, [r3, #4]
- 174 001e 9A60     		str	r2, [r3, #8]
- 175 0020 DA60     		str	r2, [r3, #12]
- 176 0022 1A61     		str	r2, [r3, #16]
- 177              	.LBB4:
- 123:Core/Src/main.c **** 
- 124:Core/Src/main.c ****   /** Configure the main internal regulator output voltage
- 125:Core/Src/main.c ****   */
- 126:Core/Src/main.c ****   __HAL_RCC_PWR_CLK_ENABLE();
- 178              		.loc 1 126 3
- 179 0024 0023     		movs	r3, #0
- 180 0026 BB60     		str	r3, [r7, #8]
- 181 0028 274B     		ldr	r3, .L11
- 182 002a 1B6C     		ldr	r3, [r3, #64]
- 183 002c 264A     		ldr	r2, .L11
- 184 002e 43F08053 		orr	r3, r3, #268435456
- 185 0032 1364     		str	r3, [r2, #64]
- 186 0034 244B     		ldr	r3, .L11
- 187 0036 1B6C     		ldr	r3, [r3, #64]
- 188 0038 03F08053 		and	r3, r3, #268435456
- 189 003c BB60     		str	r3, [r7, #8]
- 190 003e BB68     		ldr	r3, [r7, #8]
- 191              	.LBE4:
- 192              	.LBB5:
- 127:Core/Src/main.c ****   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
- 193              		.loc 1 127 3
- 194 0040 0023     		movs	r3, #0
- 195 0042 7B60     		str	r3, [r7, #4]
- 196 0044 214B     		ldr	r3, .L11+4
- 197 0046 1B68     		ldr	r3, [r3]
- 198 0048 204A     		ldr	r2, .L11+4
- 199 004a 43F44043 		orr	r3, r3, #49152
- 200 004e 1360     		str	r3, [r2]
- 201 0050 1E4B     		ldr	r3, .L11+4
- 202 0052 1B68     		ldr	r3, [r3]
- 203 0054 03F44043 		and	r3, r3, #49152
- 204 0058 7B60     		str	r3, [r7, #4]
- 205 005a 7B68     		ldr	r3, [r7, #4]
- 206              	.LBE5:
- 128:Core/Src/main.c **** 
- 129:Core/Src/main.c ****   /** Initializes the RCC Oscillators according to the specified parameters
- 130:Core/Src/main.c ****   * in the RCC_OscInitTypeDef structure.
- 131:Core/Src/main.c ****   */
- 132:Core/Src/main.c ****   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
- 207              		.loc 1 132 36
- 208 005c 0123     		movs	r3, #1
- 209 005e 3B62     		str	r3, [r7, #32]
- 133:Core/Src/main.c ****   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
- 210              		.loc 1 133 30
- 211 0060 4FF48033 		mov	r3, #65536
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 7
+ 118:Core/Src/main.c **** 
+ 119:Core/Src/main.c ****       if(d_mm>0 && d_mm < 22){
+ 167              		.loc 1 119 14
+ 168 00c8 3B68     		ldr	r3, [r7]
+ 169              		.loc 1 119 9
+ 170 00ca 002B     		cmp	r3, #0
+ 171 00cc 1CD0     		beq	.L7
+ 172              		.loc 1 119 25 discriminator 1
+ 173 00ce 3B68     		ldr	r3, [r7]
+ 174              		.loc 1 119 17 discriminator 1
+ 175 00d0 152B     		cmp	r3, #21
+ 176 00d2 19D8     		bhi	.L7
+ 120:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_1_Pin, 1);
+ 177              		.loc 1 120 9
+ 178 00d4 0122     		movs	r2, #1
+ 179 00d6 0821     		movs	r1, #8
+ 180 00d8 6448     		ldr	r0, .L14+28
+ 181 00da FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 121:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_2_Pin, 1);
+ 182              		.loc 1 121 9
+ 183 00de 0122     		movs	r2, #1
+ 184 00e0 1021     		movs	r1, #16
+ 185 00e2 6248     		ldr	r0, .L14+28
+ 186 00e4 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 122:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_3_Pin, 1);
+ 187              		.loc 1 122 9
+ 188 00e8 0122     		movs	r2, #1
+ 189 00ea 2021     		movs	r1, #32
+ 190 00ec 5F48     		ldr	r0, .L14+28
+ 191 00ee FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 123:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_4_Pin, 1);
+ 192              		.loc 1 123 9
+ 193 00f2 0122     		movs	r2, #1
+ 194 00f4 4021     		movs	r1, #64
+ 195 00f6 5D48     		ldr	r0, .L14+28
+ 196 00f8 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 124:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_5_Pin, 1);
+ 197              		.loc 1 124 9
+ 198 00fc 0122     		movs	r2, #1
+ 199 00fe 8021     		movs	r1, #128
+ 200 0100 5A48     		ldr	r0, .L14+28
+ 201 0102 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 202 0106 9BE0     		b	.L8
+ 203              	.L7:
+ 125:Core/Src/main.c ****       }
+ 126:Core/Src/main.c ****       else if(d_mm>22 && d_mm<30.5){
+ 204              		.loc 1 126 19
+ 205 0108 3B68     		ldr	r3, [r7]
+ 206              		.loc 1 126 14
+ 207 010a 162B     		cmp	r3, #22
+ 208 010c 1CD9     		bls	.L9
+ 209              		.loc 1 126 30 discriminator 1
+ 210 010e 3B68     		ldr	r3, [r7]
+ 211              		.loc 1 126 23 discriminator 1
+ 212 0110 1E2B     		cmp	r3, #30
+ 213 0112 19D8     		bhi	.L9
+ 127:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_1_Pin, 1);
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 7
 
 
- 212 0064 7B62     		str	r3, [r7, #36]
- 134:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
- 213              		.loc 1 134 34
- 214 0066 0223     		movs	r3, #2
- 215 0068 BB63     		str	r3, [r7, #56]
- 135:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
- 216              		.loc 1 135 35
- 217 006a 4FF48003 		mov	r3, #4194304
- 218 006e FB63     		str	r3, [r7, #60]
- 136:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLM = 25;
- 219              		.loc 1 136 30
- 220 0070 1923     		movs	r3, #25
- 221 0072 3B64     		str	r3, [r7, #64]
- 137:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLN = 192;
- 222              		.loc 1 137 30
- 223 0074 C023     		movs	r3, #192
- 224 0076 7B64     		str	r3, [r7, #68]
- 138:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
- 225              		.loc 1 138 30
- 226 0078 0223     		movs	r3, #2
- 227 007a BB64     		str	r3, [r7, #72]
- 139:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLQ = 4;
- 228              		.loc 1 139 30
- 229 007c 0423     		movs	r3, #4
- 230 007e FB64     		str	r3, [r7, #76]
- 140:Core/Src/main.c ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
- 231              		.loc 1 140 7
- 232 0080 07F12003 		add	r3, r7, #32
- 233 0084 1846     		mov	r0, r3
- 234 0086 FFF7FEFF 		bl	HAL_RCC_OscConfig
- 235 008a 0346     		mov	r3, r0
- 236              		.loc 1 140 6
- 237 008c 002B     		cmp	r3, #0
- 238 008e 01D0     		beq	.L8
- 141:Core/Src/main.c ****   {
- 142:Core/Src/main.c ****     Error_Handler();
- 239              		.loc 1 142 5
- 240 0090 FFF7FEFF 		bl	Error_Handler
- 241              	.L8:
- 143:Core/Src/main.c ****   }
- 144:Core/Src/main.c **** 
- 145:Core/Src/main.c ****   /** Initializes the CPU, AHB and APB buses clocks
- 146:Core/Src/main.c ****   */
- 147:Core/Src/main.c ****   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
- 242              		.loc 1 147 31
- 243 0094 0F23     		movs	r3, #15
- 244 0096 FB60     		str	r3, [r7, #12]
- 148:Core/Src/main.c ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
- 149:Core/Src/main.c ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
- 245              		.loc 1 149 34
- 246 0098 0223     		movs	r3, #2
- 247 009a 3B61     		str	r3, [r7, #16]
- 150:Core/Src/main.c ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
- 248              		.loc 1 150 35
- 249 009c 0023     		movs	r3, #0
- 250 009e 7B61     		str	r3, [r7, #20]
- 151:Core/Src/main.c ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 8
+ 214              		.loc 1 127 9
+ 215 0114 0122     		movs	r2, #1
+ 216 0116 0821     		movs	r1, #8
+ 217 0118 5448     		ldr	r0, .L14+28
+ 218 011a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 128:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_2_Pin, 1);
+ 219              		.loc 1 128 9
+ 220 011e 0122     		movs	r2, #1
+ 221 0120 1021     		movs	r1, #16
+ 222 0122 5248     		ldr	r0, .L14+28
+ 223 0124 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 129:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_3_Pin, 1);
+ 224              		.loc 1 129 9
+ 225 0128 0122     		movs	r2, #1
+ 226 012a 2021     		movs	r1, #32
+ 227 012c 4F48     		ldr	r0, .L14+28
+ 228 012e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 130:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_4_Pin, 1);
+ 229              		.loc 1 130 9
+ 230 0132 0122     		movs	r2, #1
+ 231 0134 4021     		movs	r1, #64
+ 232 0136 4D48     		ldr	r0, .L14+28
+ 233 0138 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 131:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_5_Pin, 0);
+ 234              		.loc 1 131 9
+ 235 013c 0022     		movs	r2, #0
+ 236 013e 8021     		movs	r1, #128
+ 237 0140 4A48     		ldr	r0, .L14+28
+ 238 0142 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 239 0146 7BE0     		b	.L8
+ 240              	.L9:
+ 132:Core/Src/main.c ****       }
+ 133:Core/Src/main.c ****       else if(d_mm>30.5 && d_mm<60.5){
+ 241              		.loc 1 133 19
+ 242 0148 3B68     		ldr	r3, [r7]
+ 243              		.loc 1 133 14
+ 244 014a 1E2B     		cmp	r3, #30
+ 245 014c 1CD9     		bls	.L10
+ 246              		.loc 1 133 32 discriminator 1
+ 247 014e 3B68     		ldr	r3, [r7]
+ 248              		.loc 1 133 25 discriminator 1
+ 249 0150 3C2B     		cmp	r3, #60
+ 250 0152 19D8     		bhi	.L10
+ 134:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_1_Pin, 1);
+ 251              		.loc 1 134 9
+ 252 0154 0122     		movs	r2, #1
+ 253 0156 0821     		movs	r1, #8
+ 254 0158 4448     		ldr	r0, .L14+28
+ 255 015a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 135:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_2_Pin, 1);
+ 256              		.loc 1 135 9
+ 257 015e 0122     		movs	r2, #1
+ 258 0160 1021     		movs	r1, #16
+ 259 0162 4248     		ldr	r0, .L14+28
+ 260 0164 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 136:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_3_Pin, 1);
+ 261              		.loc 1 136 9
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 8
 
 
- 251              		.loc 1 151 36
- 252 00a0 4FF48053 		mov	r3, #4096
- 253 00a4 BB61     		str	r3, [r7, #24]
- 152:Core/Src/main.c ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
- 254              		.loc 1 152 36
- 255 00a6 0023     		movs	r3, #0
- 256 00a8 FB61     		str	r3, [r7, #28]
- 153:Core/Src/main.c **** 
- 154:Core/Src/main.c ****   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3) != HAL_OK)
- 257              		.loc 1 154 7
- 258 00aa 07F10C03 		add	r3, r7, #12
- 259 00ae 0321     		movs	r1, #3
- 260 00b0 1846     		mov	r0, r3
- 261 00b2 FFF7FEFF 		bl	HAL_RCC_ClockConfig
- 262 00b6 0346     		mov	r3, r0
- 263              		.loc 1 154 6
- 264 00b8 002B     		cmp	r3, #0
- 265 00ba 01D0     		beq	.L10
- 155:Core/Src/main.c ****   {
- 156:Core/Src/main.c ****     Error_Handler();
- 266              		.loc 1 156 5
- 267 00bc FFF7FEFF 		bl	Error_Handler
- 268              	.L10:
- 157:Core/Src/main.c ****   }
- 158:Core/Src/main.c **** }
- 269              		.loc 1 158 1
- 270 00c0 00BF     		nop
- 271 00c2 5037     		adds	r7, r7, #80
- 272              	.LCFI5:
- 273              		.cfi_def_cfa_offset 8
- 274 00c4 BD46     		mov	sp, r7
- 275              	.LCFI6:
- 276              		.cfi_def_cfa_register 13
- 277              		@ sp needed
- 278 00c6 80BD     		pop	{r7, pc}
- 279              	.L12:
- 280              		.align	2
- 281              	.L11:
- 282 00c8 00380240 		.word	1073887232
- 283 00cc 00700040 		.word	1073770496
- 284              		.cfi_endproc
- 285              	.LFE131:
- 287              		.section	.text.MX_TIM4_Init,"ax",%progbits
- 288              		.align	1
- 289              		.syntax unified
- 290              		.thumb
- 291              		.thumb_func
- 293              	MX_TIM4_Init:
- 294              	.LFB132:
- 159:Core/Src/main.c **** 
- 160:Core/Src/main.c **** /**
- 161:Core/Src/main.c ****   * @brief TIM4 Initialization Function
- 162:Core/Src/main.c ****   * @param None
- 163:Core/Src/main.c ****   * @retval None
- 164:Core/Src/main.c ****   */
- 165:Core/Src/main.c **** static void MX_TIM4_Init(void)
- 166:Core/Src/main.c **** {
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 9
+ 262 0168 0122     		movs	r2, #1
+ 263 016a 2021     		movs	r1, #32
+ 264 016c 3F48     		ldr	r0, .L14+28
+ 265 016e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 137:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_4_Pin, 0);
+ 266              		.loc 1 137 9
+ 267 0172 0022     		movs	r2, #0
+ 268 0174 4021     		movs	r1, #64
+ 269 0176 3D48     		ldr	r0, .L14+28
+ 270 0178 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 138:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_5_Pin, 0);
+ 271              		.loc 1 138 9
+ 272 017c 0022     		movs	r2, #0
+ 273 017e 8021     		movs	r1, #128
+ 274 0180 3A48     		ldr	r0, .L14+28
+ 275 0182 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 276 0186 5BE0     		b	.L8
+ 277              	.L10:
+ 139:Core/Src/main.c ****         
+ 140:Core/Src/main.c ****       }
+ 141:Core/Src/main.c ****       else if(d_mm>60.5 && d_mm<100.5){
+ 278              		.loc 1 141 19
+ 279 0188 3B68     		ldr	r3, [r7]
+ 280              		.loc 1 141 14
+ 281 018a 3C2B     		cmp	r3, #60
+ 282 018c 1CD9     		bls	.L11
+ 283              		.loc 1 141 32 discriminator 1
+ 284 018e 3B68     		ldr	r3, [r7]
+ 285              		.loc 1 141 25 discriminator 1
+ 286 0190 642B     		cmp	r3, #100
+ 287 0192 19D8     		bhi	.L11
+ 142:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_1_Pin, 1);
+ 288              		.loc 1 142 9
+ 289 0194 0122     		movs	r2, #1
+ 290 0196 0821     		movs	r1, #8
+ 291 0198 3448     		ldr	r0, .L14+28
+ 292 019a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 143:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_2_Pin, 1);
+ 293              		.loc 1 143 9
+ 294 019e 0122     		movs	r2, #1
+ 295 01a0 1021     		movs	r1, #16
+ 296 01a2 3248     		ldr	r0, .L14+28
+ 297 01a4 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 144:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_3_Pin, 0);
+ 298              		.loc 1 144 9
+ 299 01a8 0022     		movs	r2, #0
+ 300 01aa 2021     		movs	r1, #32
+ 301 01ac 2F48     		ldr	r0, .L14+28
+ 302 01ae FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 145:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_4_Pin, 0);
+ 303              		.loc 1 145 9
+ 304 01b2 0022     		movs	r2, #0
+ 305 01b4 4021     		movs	r1, #64
+ 306 01b6 2D48     		ldr	r0, .L14+28
+ 307 01b8 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 146:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_5_Pin, 0);
+ 308              		.loc 1 146 9
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 9
 
 
- 295              		.loc 1 166 1
- 296              		.cfi_startproc
- 297              		@ args = 0, pretend = 0, frame = 24
- 298              		@ frame_needed = 1, uses_anonymous_args = 0
- 299 0000 80B5     		push	{r7, lr}
- 300              	.LCFI7:
- 301              		.cfi_def_cfa_offset 8
- 302              		.cfi_offset 7, -8
- 303              		.cfi_offset 14, -4
- 304 0002 86B0     		sub	sp, sp, #24
- 305              	.LCFI8:
- 306              		.cfi_def_cfa_offset 32
- 307 0004 00AF     		add	r7, sp, #0
- 308              	.LCFI9:
- 309              		.cfi_def_cfa_register 7
- 167:Core/Src/main.c **** 
- 168:Core/Src/main.c ****   /* USER CODE BEGIN TIM4_Init 0 */
- 169:Core/Src/main.c **** 
- 170:Core/Src/main.c ****   /* USER CODE END TIM4_Init 0 */
- 171:Core/Src/main.c **** 
- 172:Core/Src/main.c ****   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
- 310              		.loc 1 172 26
- 311 0006 07F10803 		add	r3, r7, #8
- 312 000a 0022     		movs	r2, #0
- 313 000c 1A60     		str	r2, [r3]
- 314 000e 5A60     		str	r2, [r3, #4]
- 315 0010 9A60     		str	r2, [r3, #8]
- 316 0012 DA60     		str	r2, [r3, #12]
- 173:Core/Src/main.c ****   TIM_MasterConfigTypeDef sMasterConfig = {0};
- 317              		.loc 1 173 27
- 318 0014 3B46     		mov	r3, r7
- 319 0016 0022     		movs	r2, #0
- 320 0018 1A60     		str	r2, [r3]
- 321 001a 5A60     		str	r2, [r3, #4]
- 174:Core/Src/main.c **** 
- 175:Core/Src/main.c ****   /* USER CODE BEGIN TIM4_Init 1 */
- 176:Core/Src/main.c **** 
- 177:Core/Src/main.c ****   /* USER CODE END TIM4_Init 1 */
- 178:Core/Src/main.c ****   htim4.Instance = TIM4;
- 322              		.loc 1 178 18
- 323 001c 1D4B     		ldr	r3, .L18
- 324 001e 1E4A     		ldr	r2, .L18+4
- 325 0020 1A60     		str	r2, [r3]
- 179:Core/Src/main.c ****   htim4.Init.Prescaler = 9600-1;
- 326              		.loc 1 179 24
- 327 0022 1C4B     		ldr	r3, .L18
- 328 0024 42F27F52 		movw	r2, #9599
- 329 0028 5A60     		str	r2, [r3, #4]
- 180:Core/Src/main.c ****   htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
- 330              		.loc 1 180 26
- 331 002a 1A4B     		ldr	r3, .L18
- 332 002c 0022     		movs	r2, #0
- 333 002e 9A60     		str	r2, [r3, #8]
- 181:Core/Src/main.c ****   htim4.Init.Period = 1030;
- 334              		.loc 1 181 21
- 335 0030 184B     		ldr	r3, .L18
- 336 0032 40F20642 		movw	r2, #1030
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 10
+ 309 01bc 0022     		movs	r2, #0
+ 310 01be 8021     		movs	r1, #128
+ 311 01c0 2A48     		ldr	r0, .L14+28
+ 312 01c2 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 313 01c6 3BE0     		b	.L8
+ 314              	.L11:
+ 147:Core/Src/main.c ****         
+ 148:Core/Src/main.c ****       }
+ 149:Core/Src/main.c ****       else if(d_mm>100.5 && d_mm<150.5){
+ 315              		.loc 1 149 19
+ 316 01c8 3B68     		ldr	r3, [r7]
+ 317              		.loc 1 149 14
+ 318 01ca 642B     		cmp	r3, #100
+ 319 01cc 1CD9     		bls	.L12
+ 320              		.loc 1 149 33 discriminator 1
+ 321 01ce 3B68     		ldr	r3, [r7]
+ 322              		.loc 1 149 26 discriminator 1
+ 323 01d0 962B     		cmp	r3, #150
+ 324 01d2 19D8     		bhi	.L12
+ 150:Core/Src/main.c ****        
+ 151:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_1_Pin, 1);
+ 325              		.loc 1 151 9
+ 326 01d4 0122     		movs	r2, #1
+ 327 01d6 0821     		movs	r1, #8
+ 328 01d8 2448     		ldr	r0, .L14+28
+ 329 01da FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 152:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_2_Pin, 0);
+ 330              		.loc 1 152 9
+ 331 01de 0022     		movs	r2, #0
+ 332 01e0 1021     		movs	r1, #16
+ 333 01e2 2248     		ldr	r0, .L14+28
+ 334 01e4 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 153:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_3_Pin, 0);
+ 335              		.loc 1 153 9
+ 336 01e8 0022     		movs	r2, #0
+ 337 01ea 2021     		movs	r1, #32
+ 338 01ec 1F48     		ldr	r0, .L14+28
+ 339 01ee FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 154:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_4_Pin, 0);
+ 340              		.loc 1 154 9
+ 341 01f2 0022     		movs	r2, #0
+ 342 01f4 4021     		movs	r1, #64
+ 343 01f6 1D48     		ldr	r0, .L14+28
+ 344 01f8 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 155:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_5_Pin, 0); 
+ 345              		.loc 1 155 9
+ 346 01fc 0022     		movs	r2, #0
+ 347 01fe 8021     		movs	r1, #128
+ 348 0200 1A48     		ldr	r0, .L14+28
+ 349 0202 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 350 0206 1BE0     		b	.L8
+ 351              	.L12:
+ 156:Core/Src/main.c ****       }
+ 157:Core/Src/main.c ****       else if(d_mm>150.5){
+ 352              		.loc 1 157 19
+ 353 0208 3B68     		ldr	r3, [r7]
+ 354              		.loc 1 157 14
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 10
 
 
- 337 0036 DA60     		str	r2, [r3, #12]
- 182:Core/Src/main.c ****   htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
- 338              		.loc 1 182 28
- 339 0038 164B     		ldr	r3, .L18
- 340 003a 0022     		movs	r2, #0
- 341 003c 1A61     		str	r2, [r3, #16]
- 183:Core/Src/main.c ****   htim4.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
- 342              		.loc 1 183 32
- 343 003e 154B     		ldr	r3, .L18
- 344 0040 0022     		movs	r2, #0
- 345 0042 9A61     		str	r2, [r3, #24]
- 184:Core/Src/main.c ****   if (HAL_TIM_Base_Init(&htim4) != HAL_OK)
- 346              		.loc 1 184 7
- 347 0044 1348     		ldr	r0, .L18
- 348 0046 FFF7FEFF 		bl	HAL_TIM_Base_Init
- 349 004a 0346     		mov	r3, r0
- 350              		.loc 1 184 6
- 351 004c 002B     		cmp	r3, #0
- 352 004e 01D0     		beq	.L14
- 185:Core/Src/main.c ****   {
- 186:Core/Src/main.c ****     Error_Handler();
- 353              		.loc 1 186 5
- 354 0050 FFF7FEFF 		bl	Error_Handler
- 355              	.L14:
- 187:Core/Src/main.c ****   }
- 188:Core/Src/main.c ****   sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
- 356              		.loc 1 188 34
- 357 0054 4FF48053 		mov	r3, #4096
- 358 0058 BB60     		str	r3, [r7, #8]
- 189:Core/Src/main.c ****   if (HAL_TIM_ConfigClockSource(&htim4, &sClockSourceConfig) != HAL_OK)
- 359              		.loc 1 189 7
- 360 005a 07F10803 		add	r3, r7, #8
- 361 005e 1946     		mov	r1, r3
- 362 0060 0C48     		ldr	r0, .L18
- 363 0062 FFF7FEFF 		bl	HAL_TIM_ConfigClockSource
- 364 0066 0346     		mov	r3, r0
- 365              		.loc 1 189 6
- 366 0068 002B     		cmp	r3, #0
- 367 006a 01D0     		beq	.L15
- 190:Core/Src/main.c ****   {
- 191:Core/Src/main.c ****     Error_Handler();
- 368              		.loc 1 191 5
- 369 006c FFF7FEFF 		bl	Error_Handler
- 370              	.L15:
- 192:Core/Src/main.c ****   }
- 193:Core/Src/main.c ****   sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
- 371              		.loc 1 193 37
- 372 0070 0023     		movs	r3, #0
- 373 0072 3B60     		str	r3, [r7]
- 194:Core/Src/main.c ****   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
- 374              		.loc 1 194 33
- 375 0074 0023     		movs	r3, #0
- 376 0076 7B60     		str	r3, [r7, #4]
- 195:Core/Src/main.c ****   if (HAL_TIMEx_MasterConfigSynchronization(&htim4, &sMasterConfig) != HAL_OK)
- 377              		.loc 1 195 7
- 378 0078 3B46     		mov	r3, r7
- 379 007a 1946     		mov	r1, r3
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 11
+ 355 020a 962B     		cmp	r3, #150
+ 356 020c 18D9     		bls	.L8
+ 158:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_1_Pin, 0);
+ 357              		.loc 1 158 9
+ 358 020e 0022     		movs	r2, #0
+ 359 0210 0821     		movs	r1, #8
+ 360 0212 1648     		ldr	r0, .L14+28
+ 361 0214 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 159:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_2_Pin, 0);
+ 362              		.loc 1 159 9
+ 363 0218 0022     		movs	r2, #0
+ 364 021a 1021     		movs	r1, #16
+ 365 021c 1348     		ldr	r0, .L14+28
+ 366 021e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 160:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_3_Pin, 0);
+ 367              		.loc 1 160 9
+ 368 0222 0022     		movs	r2, #0
+ 369 0224 2021     		movs	r1, #32
+ 370 0226 1148     		ldr	r0, .L14+28
+ 371 0228 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 161:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_4_Pin, 0);
+ 372              		.loc 1 161 9
+ 373 022c 0022     		movs	r2, #0
+ 374 022e 4021     		movs	r1, #64
+ 375 0230 0E48     		ldr	r0, .L14+28
+ 376 0232 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 162:Core/Src/main.c ****         HAL_GPIO_WritePin(GPIOA,LED_5_Pin, 0);
+ 377              		.loc 1 162 9
+ 378 0236 0022     		movs	r2, #0
+ 379 0238 8021     		movs	r1, #128
+ 380 023a 0C48     		ldr	r0, .L14+28
+ 381 023c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 382              	.L8:
+ 163:Core/Src/main.c ****       }
+ 164:Core/Src/main.c ****       HAL_Delay(5);
+ 383              		.loc 1 164 7
+ 384 0240 0520     		movs	r0, #5
+ 385 0242 FFF7FEFF 		bl	HAL_Delay
+ 386              	.L2:
+ 165:Core/Src/main.c ****     }
+ 166:Core/Src/main.c ****     
+ 167:Core/Src/main.c ****     HAL_Delay(50);
+ 387              		.loc 1 167 5
+ 388 0246 3220     		movs	r0, #50
+ 389 0248 FFF7FEFF 		bl	HAL_Delay
+ 101:Core/Src/main.c ****     {
+ 390              		.loc 1 101 8
+ 391 024c E3E6     		b	.L13
+ 392              	.L15:
+ 393 024e 00BF     		.align	3
+ 394              	.L14:
+ 395 0250 C1CAA145 		.word	1168231105
+ 396 0254 B6F3D53F 		.word	1070986166
+ 397 0258 00040240 		.word	1073873920
+ 398 025c 00000000 		.word	htim4
+ 399 0260 00000000 		.word	gElapsed
+ 400 0264 9F860100 		.word	99999
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 11
 
 
- 380 007c 0548     		ldr	r0, .L18
- 381 007e FFF7FEFF 		bl	HAL_TIMEx_MasterConfigSynchronization
- 382 0082 0346     		mov	r3, r0
- 383              		.loc 1 195 6
- 384 0084 002B     		cmp	r3, #0
- 385 0086 01D0     		beq	.L17
- 196:Core/Src/main.c ****   {
- 197:Core/Src/main.c ****     Error_Handler();
- 386              		.loc 1 197 5
- 387 0088 FFF7FEFF 		bl	Error_Handler
- 388              	.L17:
- 198:Core/Src/main.c ****   }
- 199:Core/Src/main.c ****   /* USER CODE BEGIN TIM4_Init 2 */
- 200:Core/Src/main.c **** 
- 201:Core/Src/main.c ****   /* USER CODE END TIM4_Init 2 */
- 202:Core/Src/main.c **** 
- 203:Core/Src/main.c **** }
- 389              		.loc 1 203 1
- 390 008c 00BF     		nop
- 391 008e 1837     		adds	r7, r7, #24
- 392              	.LCFI10:
- 393              		.cfi_def_cfa_offset 8
- 394 0090 BD46     		mov	sp, r7
- 395              	.LCFI11:
- 396              		.cfi_def_cfa_register 13
- 397              		@ sp needed
- 398 0092 80BD     		pop	{r7, pc}
- 399              	.L19:
- 400              		.align	2
- 401              	.L18:
- 402 0094 00000000 		.word	htim4
- 403 0098 00080040 		.word	1073743872
- 404              		.cfi_endproc
- 405              	.LFE132:
- 407              		.section	.text.MX_GPIO_Init,"ax",%progbits
- 408              		.align	1
+ 401 0268 0000E03F 		.word	1071644672
+ 402 026c 00000240 		.word	1073872896
+ 403              		.cfi_endproc
+ 404              	.LFE130:
+ 406              		.section	.text.SystemClock_Config,"ax",%progbits
+ 407              		.align	1
+ 408              		.global	SystemClock_Config
  409              		.syntax unified
  410              		.thumb
  411              		.thumb_func
- 413              	MX_GPIO_Init:
- 414              	.LFB133:
- 204:Core/Src/main.c **** 
- 205:Core/Src/main.c **** /**
- 206:Core/Src/main.c ****   * @brief GPIO Initialization Function
- 207:Core/Src/main.c ****   * @param None
- 208:Core/Src/main.c ****   * @retval None
- 209:Core/Src/main.c ****   */
- 210:Core/Src/main.c **** static void MX_GPIO_Init(void)
- 211:Core/Src/main.c **** {
- 415              		.loc 1 211 1
+ 413              	SystemClock_Config:
+ 414              	.LFB131:
+ 168:Core/Src/main.c ****  
+ 169:Core/Src/main.c ****     
+ 170:Core/Src/main.c ****   }
+ 171:Core/Src/main.c ****     /* USER CODE END WHILE */
+ 172:Core/Src/main.c **** 
+ 173:Core/Src/main.c ****     /* USER CODE BEGIN 3 */
+ 174:Core/Src/main.c ****   
+ 175:Core/Src/main.c ****   /* USER CODE END 3 */
+ 176:Core/Src/main.c **** }
+ 177:Core/Src/main.c **** 
+ 178:Core/Src/main.c **** /**
+ 179:Core/Src/main.c ****   * @brief System Clock Configuration
+ 180:Core/Src/main.c ****   * @retval None
+ 181:Core/Src/main.c ****   */
+ 182:Core/Src/main.c **** void SystemClock_Config(void)
+ 183:Core/Src/main.c **** {
+ 415              		.loc 1 183 1
  416              		.cfi_startproc
- 417              		@ args = 0, pretend = 0, frame = 40
+ 417              		@ args = 0, pretend = 0, frame = 80
  418              		@ frame_needed = 1, uses_anonymous_args = 0
  419 0000 80B5     		push	{r7, lr}
- 420              	.LCFI12:
+ 420              	.LCFI3:
  421              		.cfi_def_cfa_offset 8
  422              		.cfi_offset 7, -8
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 12
-
-
  423              		.cfi_offset 14, -4
- 424 0002 8AB0     		sub	sp, sp, #40
- 425              	.LCFI13:
- 426              		.cfi_def_cfa_offset 48
+ 424 0002 94B0     		sub	sp, sp, #80
+ 425              	.LCFI4:
+ 426              		.cfi_def_cfa_offset 88
  427 0004 00AF     		add	r7, sp, #0
- 428              	.LCFI14:
+ 428              	.LCFI5:
  429              		.cfi_def_cfa_register 7
- 212:Core/Src/main.c ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
- 430              		.loc 1 212 20
- 431 0006 07F11403 		add	r3, r7, #20
- 432 000a 0022     		movs	r2, #0
- 433 000c 1A60     		str	r2, [r3]
- 434 000e 5A60     		str	r2, [r3, #4]
- 435 0010 9A60     		str	r2, [r3, #8]
- 436 0012 DA60     		str	r2, [r3, #12]
- 437 0014 1A61     		str	r2, [r3, #16]
- 438              	.LBB6:
- 213:Core/Src/main.c **** /* USER CODE BEGIN MX_GPIO_Init_1 */
- 214:Core/Src/main.c **** /* USER CODE END MX_GPIO_Init_1 */
- 215:Core/Src/main.c **** 
- 216:Core/Src/main.c ****   /* GPIO Ports Clock Enable */
- 217:Core/Src/main.c ****   __HAL_RCC_GPIOC_CLK_ENABLE();
- 439              		.loc 1 217 3
- 440 0016 0023     		movs	r3, #0
- 441 0018 3B61     		str	r3, [r7, #16]
- 442 001a 374B     		ldr	r3, .L21
- 443 001c 1B6B     		ldr	r3, [r3, #48]
- 444 001e 364A     		ldr	r2, .L21
- 445 0020 43F00403 		orr	r3, r3, #4
- 446 0024 1363     		str	r3, [r2, #48]
- 447 0026 344B     		ldr	r3, .L21
- 448 0028 1B6B     		ldr	r3, [r3, #48]
- 449 002a 03F00403 		and	r3, r3, #4
- 450 002e 3B61     		str	r3, [r7, #16]
- 451 0030 3B69     		ldr	r3, [r7, #16]
- 452              	.LBE6:
- 453              	.LBB7:
- 218:Core/Src/main.c ****   __HAL_RCC_GPIOH_CLK_ENABLE();
- 454              		.loc 1 218 3
- 455 0032 0023     		movs	r3, #0
- 456 0034 FB60     		str	r3, [r7, #12]
- 457 0036 304B     		ldr	r3, .L21
- 458 0038 1B6B     		ldr	r3, [r3, #48]
- 459 003a 2F4A     		ldr	r2, .L21
- 460 003c 43F08003 		orr	r3, r3, #128
- 461 0040 1363     		str	r3, [r2, #48]
- 462 0042 2D4B     		ldr	r3, .L21
- 463 0044 1B6B     		ldr	r3, [r3, #48]
- 464 0046 03F08003 		and	r3, r3, #128
- 465 004a FB60     		str	r3, [r7, #12]
- 466 004c FB68     		ldr	r3, [r7, #12]
- 467              	.LBE7:
- 468              	.LBB8:
- 219:Core/Src/main.c ****   __HAL_RCC_GPIOA_CLK_ENABLE();
- 469              		.loc 1 219 3
- 470 004e 0023     		movs	r3, #0
- 471 0050 BB60     		str	r3, [r7, #8]
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 13
+ 184:Core/Src/main.c ****   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+ 430              		.loc 1 184 22
+ 431 0006 07F12003 		add	r3, r7, #32
+ 432 000a 3022     		movs	r2, #48
+ 433 000c 0021     		movs	r1, #0
+ 434 000e 1846     		mov	r0, r3
+ 435 0010 FFF7FEFF 		bl	memset
+ 185:Core/Src/main.c ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+ 436              		.loc 1 185 22
+ 437 0014 07F10C03 		add	r3, r7, #12
+ 438 0018 0022     		movs	r2, #0
+ 439 001a 1A60     		str	r2, [r3]
+ 440 001c 5A60     		str	r2, [r3, #4]
+ 441 001e 9A60     		str	r2, [r3, #8]
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 12
 
 
- 472 0052 294B     		ldr	r3, .L21
- 473 0054 1B6B     		ldr	r3, [r3, #48]
- 474 0056 284A     		ldr	r2, .L21
- 475 0058 43F00103 		orr	r3, r3, #1
- 476 005c 1363     		str	r3, [r2, #48]
- 477 005e 264B     		ldr	r3, .L21
- 478 0060 1B6B     		ldr	r3, [r3, #48]
- 479 0062 03F00103 		and	r3, r3, #1
- 480 0066 BB60     		str	r3, [r7, #8]
- 481 0068 BB68     		ldr	r3, [r7, #8]
- 482              	.LBE8:
- 483              	.LBB9:
- 220:Core/Src/main.c ****   __HAL_RCC_GPIOB_CLK_ENABLE();
- 484              		.loc 1 220 3
- 485 006a 0023     		movs	r3, #0
- 486 006c 7B60     		str	r3, [r7, #4]
- 487 006e 224B     		ldr	r3, .L21
- 488 0070 1B6B     		ldr	r3, [r3, #48]
- 489 0072 214A     		ldr	r2, .L21
- 490 0074 43F00203 		orr	r3, r3, #2
- 491 0078 1363     		str	r3, [r2, #48]
- 492 007a 1F4B     		ldr	r3, .L21
- 493 007c 1B6B     		ldr	r3, [r3, #48]
- 494 007e 03F00203 		and	r3, r3, #2
- 495 0082 7B60     		str	r3, [r7, #4]
- 496 0084 7B68     		ldr	r3, [r7, #4]
- 497              	.LBE9:
- 221:Core/Src/main.c **** 
- 222:Core/Src/main.c ****   /*Configure GPIO pin Output Level */
- 223:Core/Src/main.c ****   HAL_GPIO_WritePin(KIT_LED_GPIO_Port, KIT_LED_Pin, GPIO_PIN_RESET);
- 498              		.loc 1 223 3
- 499 0086 0022     		movs	r2, #0
- 500 0088 4FF40051 		mov	r1, #8192
- 501 008c 1B48     		ldr	r0, .L21+4
- 502 008e FFF7FEFF 		bl	HAL_GPIO_WritePin
- 224:Core/Src/main.c **** 
- 225:Core/Src/main.c ****   /*Configure GPIO pin Output Level */
- 226:Core/Src/main.c ****   HAL_GPIO_WritePin(GPIOA, LED1_Pin|LED2_Pin|LED3_Pin|LED4_Pin
- 503              		.loc 1 226 3
- 504 0092 0022     		movs	r2, #0
- 505 0094 F821     		movs	r1, #248
- 506 0096 1A48     		ldr	r0, .L21+8
- 507 0098 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 227:Core/Src/main.c ****                           |LED5_Pin, GPIO_PIN_RESET);
- 228:Core/Src/main.c **** 
- 229:Core/Src/main.c ****   /*Configure GPIO pin : KIT_LED_Pin */
- 230:Core/Src/main.c ****   GPIO_InitStruct.Pin = KIT_LED_Pin;
- 508              		.loc 1 230 23
- 509 009c 4FF40053 		mov	r3, #8192
- 510 00a0 7B61     		str	r3, [r7, #20]
- 231:Core/Src/main.c ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
- 511              		.loc 1 231 24
- 512 00a2 0123     		movs	r3, #1
- 513 00a4 BB61     		str	r3, [r7, #24]
- 232:Core/Src/main.c ****   GPIO_InitStruct.Pull = GPIO_NOPULL;
- 514              		.loc 1 232 24
- 515 00a6 0023     		movs	r3, #0
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 14
+ 442 0020 DA60     		str	r2, [r3, #12]
+ 443 0022 1A61     		str	r2, [r3, #16]
+ 444              	.LBB4:
+ 186:Core/Src/main.c **** 
+ 187:Core/Src/main.c ****   /** Configure the main internal regulator output voltage
+ 188:Core/Src/main.c ****   */
+ 189:Core/Src/main.c ****   __HAL_RCC_PWR_CLK_ENABLE();
+ 445              		.loc 1 189 3
+ 446 0024 0023     		movs	r3, #0
+ 447 0026 BB60     		str	r3, [r7, #8]
+ 448 0028 274B     		ldr	r3, .L20
+ 449 002a 1B6C     		ldr	r3, [r3, #64]
+ 450 002c 264A     		ldr	r2, .L20
+ 451 002e 43F08053 		orr	r3, r3, #268435456
+ 452 0032 1364     		str	r3, [r2, #64]
+ 453 0034 244B     		ldr	r3, .L20
+ 454 0036 1B6C     		ldr	r3, [r3, #64]
+ 455 0038 03F08053 		and	r3, r3, #268435456
+ 456 003c BB60     		str	r3, [r7, #8]
+ 457 003e BB68     		ldr	r3, [r7, #8]
+ 458              	.LBE4:
+ 459              	.LBB5:
+ 190:Core/Src/main.c ****   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
+ 460              		.loc 1 190 3
+ 461 0040 0023     		movs	r3, #0
+ 462 0042 7B60     		str	r3, [r7, #4]
+ 463 0044 214B     		ldr	r3, .L20+4
+ 464 0046 1B68     		ldr	r3, [r3]
+ 465 0048 204A     		ldr	r2, .L20+4
+ 466 004a 43F44043 		orr	r3, r3, #49152
+ 467 004e 1360     		str	r3, [r2]
+ 468 0050 1E4B     		ldr	r3, .L20+4
+ 469 0052 1B68     		ldr	r3, [r3]
+ 470 0054 03F44043 		and	r3, r3, #49152
+ 471 0058 7B60     		str	r3, [r7, #4]
+ 472 005a 7B68     		ldr	r3, [r7, #4]
+ 473              	.LBE5:
+ 191:Core/Src/main.c **** 
+ 192:Core/Src/main.c ****   /** Initializes the RCC Oscillators according to the specified parameters
+ 193:Core/Src/main.c ****   * in the RCC_OscInitTypeDef structure.
+ 194:Core/Src/main.c ****   */
+ 195:Core/Src/main.c ****   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+ 474              		.loc 1 195 36
+ 475 005c 0123     		movs	r3, #1
+ 476 005e 3B62     		str	r3, [r7, #32]
+ 196:Core/Src/main.c ****   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+ 477              		.loc 1 196 30
+ 478 0060 4FF48033 		mov	r3, #65536
+ 479 0064 7B62     		str	r3, [r7, #36]
+ 197:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+ 480              		.loc 1 197 34
+ 481 0066 0223     		movs	r3, #2
+ 482 0068 BB63     		str	r3, [r7, #56]
+ 198:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+ 483              		.loc 1 198 35
+ 484 006a 4FF48003 		mov	r3, #4194304
+ 485 006e FB63     		str	r3, [r7, #60]
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 13
 
 
- 516 00a8 FB61     		str	r3, [r7, #28]
- 233:Core/Src/main.c ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
- 517              		.loc 1 233 25
- 518 00aa 0023     		movs	r3, #0
- 519 00ac 3B62     		str	r3, [r7, #32]
- 234:Core/Src/main.c ****   HAL_GPIO_Init(KIT_LED_GPIO_Port, &GPIO_InitStruct);
- 520              		.loc 1 234 3
- 521 00ae 07F11403 		add	r3, r7, #20
- 522 00b2 1946     		mov	r1, r3
- 523 00b4 1148     		ldr	r0, .L21+4
- 524 00b6 FFF7FEFF 		bl	HAL_GPIO_Init
- 235:Core/Src/main.c **** 
- 236:Core/Src/main.c ****   /*Configure GPIO pins : LED1_Pin LED2_Pin LED3_Pin LED4_Pin
- 237:Core/Src/main.c ****                            LED5_Pin */
- 238:Core/Src/main.c ****   GPIO_InitStruct.Pin = LED1_Pin|LED2_Pin|LED3_Pin|LED4_Pin
- 525              		.loc 1 238 23
- 526 00ba F823     		movs	r3, #248
- 527 00bc 7B61     		str	r3, [r7, #20]
- 239:Core/Src/main.c ****                           |LED5_Pin;
- 240:Core/Src/main.c ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
- 528              		.loc 1 240 24
- 529 00be 0123     		movs	r3, #1
- 530 00c0 BB61     		str	r3, [r7, #24]
- 241:Core/Src/main.c ****   GPIO_InitStruct.Pull = GPIO_NOPULL;
- 531              		.loc 1 241 24
- 532 00c2 0023     		movs	r3, #0
- 533 00c4 FB61     		str	r3, [r7, #28]
- 242:Core/Src/main.c ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
- 534              		.loc 1 242 25
- 535 00c6 0023     		movs	r3, #0
- 536 00c8 3B62     		str	r3, [r7, #32]
- 243:Core/Src/main.c ****   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
- 537              		.loc 1 243 3
- 538 00ca 07F11403 		add	r3, r7, #20
- 539 00ce 1946     		mov	r1, r3
- 540 00d0 0B48     		ldr	r0, .L21+8
- 541 00d2 FFF7FEFF 		bl	HAL_GPIO_Init
- 244:Core/Src/main.c **** 
- 245:Core/Src/main.c ****   /*Configure GPIO pins : BTN2_Pin BTN1_Pin */
- 246:Core/Src/main.c ****   GPIO_InitStruct.Pin = BTN2_Pin|BTN1_Pin;
- 542              		.loc 1 246 23
- 543 00d6 4FF41043 		mov	r3, #36864
- 544 00da 7B61     		str	r3, [r7, #20]
- 247:Core/Src/main.c ****   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
- 545              		.loc 1 247 24
- 546 00dc 0023     		movs	r3, #0
- 547 00de BB61     		str	r3, [r7, #24]
- 248:Core/Src/main.c ****   GPIO_InitStruct.Pull = GPIO_NOPULL;
- 548              		.loc 1 248 24
- 549 00e0 0023     		movs	r3, #0
- 550 00e2 FB61     		str	r3, [r7, #28]
- 249:Core/Src/main.c ****   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
- 551              		.loc 1 249 3
- 552 00e4 07F11403 		add	r3, r7, #20
- 553 00e8 1946     		mov	r1, r3
- 554 00ea 0648     		ldr	r0, .L21+12
- 555 00ec FFF7FEFF 		bl	HAL_GPIO_Init
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 15
+ 199:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLM = 25;
+ 486              		.loc 1 199 30
+ 487 0070 1923     		movs	r3, #25
+ 488 0072 3B64     		str	r3, [r7, #64]
+ 200:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLN = 192;
+ 489              		.loc 1 200 30
+ 490 0074 C023     		movs	r3, #192
+ 491 0076 7B64     		str	r3, [r7, #68]
+ 201:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
+ 492              		.loc 1 201 30
+ 493 0078 0223     		movs	r3, #2
+ 494 007a BB64     		str	r3, [r7, #72]
+ 202:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLQ = 4;
+ 495              		.loc 1 202 30
+ 496 007c 0423     		movs	r3, #4
+ 497 007e FB64     		str	r3, [r7, #76]
+ 203:Core/Src/main.c ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+ 498              		.loc 1 203 7
+ 499 0080 07F12003 		add	r3, r7, #32
+ 500 0084 1846     		mov	r0, r3
+ 501 0086 FFF7FEFF 		bl	HAL_RCC_OscConfig
+ 502 008a 0346     		mov	r3, r0
+ 503              		.loc 1 203 6
+ 504 008c 002B     		cmp	r3, #0
+ 505 008e 01D0     		beq	.L17
+ 204:Core/Src/main.c ****   {
+ 205:Core/Src/main.c ****     Error_Handler();
+ 506              		.loc 1 205 5
+ 507 0090 FFF7FEFF 		bl	Error_Handler
+ 508              	.L17:
+ 206:Core/Src/main.c ****   }
+ 207:Core/Src/main.c **** 
+ 208:Core/Src/main.c ****   /** Initializes the CPU, AHB and APB buses clocks
+ 209:Core/Src/main.c ****   */
+ 210:Core/Src/main.c ****   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+ 509              		.loc 1 210 31
+ 510 0094 0F23     		movs	r3, #15
+ 511 0096 FB60     		str	r3, [r7, #12]
+ 211:Core/Src/main.c ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+ 212:Core/Src/main.c ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+ 512              		.loc 1 212 34
+ 513 0098 0223     		movs	r3, #2
+ 514 009a 3B61     		str	r3, [r7, #16]
+ 213:Core/Src/main.c ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+ 515              		.loc 1 213 35
+ 516 009c 0023     		movs	r3, #0
+ 517 009e 7B61     		str	r3, [r7, #20]
+ 214:Core/Src/main.c ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+ 518              		.loc 1 214 36
+ 519 00a0 4FF48053 		mov	r3, #4096
+ 520 00a4 BB61     		str	r3, [r7, #24]
+ 215:Core/Src/main.c ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+ 521              		.loc 1 215 36
+ 522 00a6 0023     		movs	r3, #0
+ 523 00a8 FB61     		str	r3, [r7, #28]
+ 216:Core/Src/main.c **** 
+ 217:Core/Src/main.c ****   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3) != HAL_OK)
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 14
 
 
- 250:Core/Src/main.c **** 
- 251:Core/Src/main.c **** /* USER CODE BEGIN MX_GPIO_Init_2 */
- 252:Core/Src/main.c **** /* USER CODE END MX_GPIO_Init_2 */
- 253:Core/Src/main.c **** }
- 556              		.loc 1 253 1
- 557 00f0 00BF     		nop
- 558 00f2 2837     		adds	r7, r7, #40
- 559              	.LCFI15:
- 560              		.cfi_def_cfa_offset 8
- 561 00f4 BD46     		mov	sp, r7
- 562              	.LCFI16:
- 563              		.cfi_def_cfa_register 13
- 564              		@ sp needed
- 565 00f6 80BD     		pop	{r7, pc}
- 566              	.L22:
- 567              		.align	2
- 568              	.L21:
- 569 00f8 00380240 		.word	1073887232
- 570 00fc 00080240 		.word	1073874944
- 571 0100 00000240 		.word	1073872896
- 572 0104 00040240 		.word	1073873920
- 573              		.cfi_endproc
- 574              	.LFE133:
- 576              		.section	.text.HAL_TIM_PeriodElapsedCallback,"ax",%progbits
- 577              		.align	1
- 578              		.global	HAL_TIM_PeriodElapsedCallback
- 579              		.syntax unified
- 580              		.thumb
- 581              		.thumb_func
- 583              	HAL_TIM_PeriodElapsedCallback:
- 584              	.LFB134:
- 254:Core/Src/main.c **** 
- 255:Core/Src/main.c **** /* USER CODE BEGIN 4 */
- 256:Core/Src/main.c **** void HAL_TIM_PeriodElapsedCallback (TIM_HandleTypeDef * htim){
- 585              		.loc 1 256 62
- 586              		.cfi_startproc
- 587              		@ args = 0, pretend = 0, frame = 8
- 588              		@ frame_needed = 1, uses_anonymous_args = 0
- 589 0000 80B5     		push	{r7, lr}
- 590              	.LCFI17:
- 591              		.cfi_def_cfa_offset 8
- 592              		.cfi_offset 7, -8
- 593              		.cfi_offset 14, -4
- 594 0002 82B0     		sub	sp, sp, #8
- 595              	.LCFI18:
- 596              		.cfi_def_cfa_offset 16
- 597 0004 00AF     		add	r7, sp, #0
- 598              	.LCFI19:
- 599              		.cfi_def_cfa_register 7
- 600 0006 7860     		str	r0, [r7, #4]
- 257:Core/Src/main.c ****   counter--;
- 601              		.loc 1 257 10
- 602 0008 254B     		ldr	r3, .L26
- 603 000a 1B88     		ldrh	r3, [r3]
- 604 000c 013B     		subs	r3, r3, #1
- 605 000e 9AB2     		uxth	r2, r3
- 606 0010 234B     		ldr	r3, .L26
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 16
+ 524              		.loc 1 217 7
+ 525 00aa 07F10C03 		add	r3, r7, #12
+ 526 00ae 0321     		movs	r1, #3
+ 527 00b0 1846     		mov	r0, r3
+ 528 00b2 FFF7FEFF 		bl	HAL_RCC_ClockConfig
+ 529 00b6 0346     		mov	r3, r0
+ 530              		.loc 1 217 6
+ 531 00b8 002B     		cmp	r3, #0
+ 532 00ba 01D0     		beq	.L19
+ 218:Core/Src/main.c ****   {
+ 219:Core/Src/main.c ****     Error_Handler();
+ 533              		.loc 1 219 5
+ 534 00bc FFF7FEFF 		bl	Error_Handler
+ 535              	.L19:
+ 220:Core/Src/main.c ****   }
+ 221:Core/Src/main.c **** }
+ 536              		.loc 1 221 1
+ 537 00c0 00BF     		nop
+ 538 00c2 5037     		adds	r7, r7, #80
+ 539              	.LCFI6:
+ 540              		.cfi_def_cfa_offset 8
+ 541 00c4 BD46     		mov	sp, r7
+ 542              	.LCFI7:
+ 543              		.cfi_def_cfa_register 13
+ 544              		@ sp needed
+ 545 00c6 80BD     		pop	{r7, pc}
+ 546              	.L21:
+ 547              		.align	2
+ 548              	.L20:
+ 549 00c8 00380240 		.word	1073887232
+ 550 00cc 00700040 		.word	1073770496
+ 551              		.cfi_endproc
+ 552              	.LFE131:
+ 554              		.section	.text.MX_TIM4_Init,"ax",%progbits
+ 555              		.align	1
+ 556              		.syntax unified
+ 557              		.thumb
+ 558              		.thumb_func
+ 560              	MX_TIM4_Init:
+ 561              	.LFB132:
+ 222:Core/Src/main.c **** 
+ 223:Core/Src/main.c **** /**
+ 224:Core/Src/main.c ****   * @brief TIM4 Initialization Function
+ 225:Core/Src/main.c ****   * @param None
+ 226:Core/Src/main.c ****   * @retval None
+ 227:Core/Src/main.c ****   */
+ 228:Core/Src/main.c **** static void MX_TIM4_Init(void)
+ 229:Core/Src/main.c **** {
+ 562              		.loc 1 229 1
+ 563              		.cfi_startproc
+ 564              		@ args = 0, pretend = 0, frame = 40
+ 565              		@ frame_needed = 1, uses_anonymous_args = 0
+ 566 0000 80B5     		push	{r7, lr}
+ 567              	.LCFI8:
+ 568              		.cfi_def_cfa_offset 8
+ 569              		.cfi_offset 7, -8
+ 570              		.cfi_offset 14, -4
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 15
 
 
- 607 0012 1A80     		strh	r2, [r3]	@ movhi
- 258:Core/Src/main.c ****   
- 259:Core/Src/main.c ****   HAL_GPIO_WritePin(GPIOA,LED1_Pin, (counter & 0x01) ? 1 : 0);
- 608              		.loc 1 259 58
- 609 0014 224B     		ldr	r3, .L26
- 610 0016 1B88     		ldrh	r3, [r3]
- 611 0018 DBB2     		uxtb	r3, r3
- 612 001a 03F00103 		and	r3, r3, #1
- 613 001e DBB2     		uxtb	r3, r3
- 614              		.loc 1 259 3
- 615 0020 1A46     		mov	r2, r3
- 616 0022 0821     		movs	r1, #8
- 617 0024 1F48     		ldr	r0, .L26+4
- 618 0026 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 260:Core/Src/main.c ****   HAL_GPIO_WritePin(GPIOA,LED2_Pin, (counter & 0x02) ? 1 : 0);
- 619              		.loc 1 260 58
- 620 002a 1D4B     		ldr	r3, .L26
- 621 002c 1B88     		ldrh	r3, [r3]
- 622 002e 5B10     		asrs	r3, r3, #1
- 623 0030 DBB2     		uxtb	r3, r3
- 624 0032 03F00103 		and	r3, r3, #1
- 625 0036 DBB2     		uxtb	r3, r3
- 626              		.loc 1 260 3
- 627 0038 1A46     		mov	r2, r3
- 628 003a 1021     		movs	r1, #16
- 629 003c 1948     		ldr	r0, .L26+4
- 630 003e FFF7FEFF 		bl	HAL_GPIO_WritePin
- 261:Core/Src/main.c ****   HAL_GPIO_WritePin(GPIOA,LED3_Pin, (counter & 0x04) ? 1 : 0);
- 631              		.loc 1 261 58
- 632 0042 174B     		ldr	r3, .L26
- 633 0044 1B88     		ldrh	r3, [r3]
- 634 0046 9B10     		asrs	r3, r3, #2
- 635 0048 DBB2     		uxtb	r3, r3
- 636 004a 03F00103 		and	r3, r3, #1
- 637 004e DBB2     		uxtb	r3, r3
- 638              		.loc 1 261 3
- 639 0050 1A46     		mov	r2, r3
- 640 0052 2021     		movs	r1, #32
- 641 0054 1348     		ldr	r0, .L26+4
- 642 0056 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 262:Core/Src/main.c ****   HAL_GPIO_WritePin(GPIOA,LED4_Pin, (counter & 0x08) ? 1 : 0);
- 643              		.loc 1 262 58
- 644 005a 114B     		ldr	r3, .L26
- 645 005c 1B88     		ldrh	r3, [r3]
- 646 005e DB10     		asrs	r3, r3, #3
- 647 0060 DBB2     		uxtb	r3, r3
- 648 0062 03F00103 		and	r3, r3, #1
- 649 0066 DBB2     		uxtb	r3, r3
- 650              		.loc 1 262 3
- 651 0068 1A46     		mov	r2, r3
- 652 006a 4021     		movs	r1, #64
- 653 006c 0D48     		ldr	r0, .L26+4
- 654 006e FFF7FEFF 		bl	HAL_GPIO_WritePin
- 263:Core/Src/main.c ****   HAL_GPIO_WritePin(GPIOA,LED5_Pin, (counter & 0x10) ? 1 : 0);
- 655              		.loc 1 263 58
- 656 0072 0B4B     		ldr	r3, .L26
- 657 0074 1B88     		ldrh	r3, [r3]
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 17
+ 571 0002 8AB0     		sub	sp, sp, #40
+ 572              	.LCFI9:
+ 573              		.cfi_def_cfa_offset 48
+ 574 0004 00AF     		add	r7, sp, #0
+ 575              	.LCFI10:
+ 576              		.cfi_def_cfa_register 7
+ 230:Core/Src/main.c **** 
+ 231:Core/Src/main.c ****   /* USER CODE BEGIN TIM4_Init 0 */
+ 232:Core/Src/main.c **** 
+ 233:Core/Src/main.c ****   /* USER CODE END TIM4_Init 0 */
+ 234:Core/Src/main.c **** 
+ 235:Core/Src/main.c ****   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+ 577              		.loc 1 235 26
+ 578 0006 07F11803 		add	r3, r7, #24
+ 579 000a 0022     		movs	r2, #0
+ 580 000c 1A60     		str	r2, [r3]
+ 581 000e 5A60     		str	r2, [r3, #4]
+ 582 0010 9A60     		str	r2, [r3, #8]
+ 583 0012 DA60     		str	r2, [r3, #12]
+ 236:Core/Src/main.c ****   TIM_MasterConfigTypeDef sMasterConfig = {0};
+ 584              		.loc 1 236 27
+ 585 0014 07F11003 		add	r3, r7, #16
+ 586 0018 0022     		movs	r2, #0
+ 587 001a 1A60     		str	r2, [r3]
+ 588 001c 5A60     		str	r2, [r3, #4]
+ 237:Core/Src/main.c ****   TIM_IC_InitTypeDef sConfigIC = {0};
+ 589              		.loc 1 237 22
+ 590 001e 3B46     		mov	r3, r7
+ 591 0020 0022     		movs	r2, #0
+ 592 0022 1A60     		str	r2, [r3]
+ 593 0024 5A60     		str	r2, [r3, #4]
+ 594 0026 9A60     		str	r2, [r3, #8]
+ 595 0028 DA60     		str	r2, [r3, #12]
+ 238:Core/Src/main.c **** 
+ 239:Core/Src/main.c ****   /* USER CODE BEGIN TIM4_Init 1 */
+ 240:Core/Src/main.c **** 
+ 241:Core/Src/main.c ****   /* USER CODE END TIM4_Init 1 */
+ 242:Core/Src/main.c ****   htim4.Instance = TIM4;
+ 596              		.loc 1 242 18
+ 597 002a 334B     		ldr	r3, .L30
+ 598 002c 334A     		ldr	r2, .L30+4
+ 599 002e 1A60     		str	r2, [r3]
+ 243:Core/Src/main.c ****   htim4.Init.Prescaler = 96-1;
+ 600              		.loc 1 243 24
+ 601 0030 314B     		ldr	r3, .L30
+ 602 0032 5F22     		movs	r2, #95
+ 603 0034 5A60     		str	r2, [r3, #4]
+ 244:Core/Src/main.c ****   htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
+ 604              		.loc 1 244 26
+ 605 0036 304B     		ldr	r3, .L30
+ 606 0038 0022     		movs	r2, #0
+ 607 003a 9A60     		str	r2, [r3, #8]
+ 245:Core/Src/main.c ****   htim4.Init.Period = 65535;
+ 608              		.loc 1 245 21
+ 609 003c 2E4B     		ldr	r3, .L30
+ 610 003e 4FF6FF72 		movw	r2, #65535
+ 611 0042 DA60     		str	r2, [r3, #12]
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 16
 
 
- 658 0076 1B11     		asrs	r3, r3, #4
- 659 0078 DBB2     		uxtb	r3, r3
- 660 007a 03F00103 		and	r3, r3, #1
- 661 007e DBB2     		uxtb	r3, r3
- 662              		.loc 1 263 3
- 663 0080 1A46     		mov	r2, r3
- 664 0082 8021     		movs	r1, #128
- 665 0084 0748     		ldr	r0, .L26+4
- 666 0086 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 264:Core/Src/main.c ****   if(counter==0){
- 667              		.loc 1 264 13
- 668 008a 054B     		ldr	r3, .L26
- 669 008c 1B88     		ldrh	r3, [r3]
- 670              		.loc 1 264 5
- 671 008e 002B     		cmp	r3, #0
- 672 0090 02D1     		bne	.L25
- 265:Core/Src/main.c ****     counter = 32;
- 673              		.loc 1 265 13
- 674 0092 034B     		ldr	r3, .L26
- 675 0094 2022     		movs	r2, #32
- 676 0096 1A80     		strh	r2, [r3]	@ movhi
- 677              	.L25:
+ 246:Core/Src/main.c ****   htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+ 612              		.loc 1 246 28
+ 613 0044 2C4B     		ldr	r3, .L30
+ 614 0046 0022     		movs	r2, #0
+ 615 0048 1A61     		str	r2, [r3, #16]
+ 247:Core/Src/main.c ****   htim4.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+ 616              		.loc 1 247 32
+ 617 004a 2B4B     		ldr	r3, .L30
+ 618 004c 0022     		movs	r2, #0
+ 619 004e 9A61     		str	r2, [r3, #24]
+ 248:Core/Src/main.c ****   if (HAL_TIM_Base_Init(&htim4) != HAL_OK)
+ 620              		.loc 1 248 7
+ 621 0050 2948     		ldr	r0, .L30
+ 622 0052 FFF7FEFF 		bl	HAL_TIM_Base_Init
+ 623 0056 0346     		mov	r3, r0
+ 624              		.loc 1 248 6
+ 625 0058 002B     		cmp	r3, #0
+ 626 005a 01D0     		beq	.L23
+ 249:Core/Src/main.c ****   {
+ 250:Core/Src/main.c ****     Error_Handler();
+ 627              		.loc 1 250 5
+ 628 005c FFF7FEFF 		bl	Error_Handler
+ 629              	.L23:
+ 251:Core/Src/main.c ****   }
+ 252:Core/Src/main.c ****   sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+ 630              		.loc 1 252 34
+ 631 0060 4FF48053 		mov	r3, #4096
+ 632 0064 BB61     		str	r3, [r7, #24]
+ 253:Core/Src/main.c ****   if (HAL_TIM_ConfigClockSource(&htim4, &sClockSourceConfig) != HAL_OK)
+ 633              		.loc 1 253 7
+ 634 0066 07F11803 		add	r3, r7, #24
+ 635 006a 1946     		mov	r1, r3
+ 636 006c 2248     		ldr	r0, .L30
+ 637 006e FFF7FEFF 		bl	HAL_TIM_ConfigClockSource
+ 638 0072 0346     		mov	r3, r0
+ 639              		.loc 1 253 6
+ 640 0074 002B     		cmp	r3, #0
+ 641 0076 01D0     		beq	.L24
+ 254:Core/Src/main.c ****   {
+ 255:Core/Src/main.c ****     Error_Handler();
+ 642              		.loc 1 255 5
+ 643 0078 FFF7FEFF 		bl	Error_Handler
+ 644              	.L24:
+ 256:Core/Src/main.c ****   }
+ 257:Core/Src/main.c ****   if (HAL_TIM_IC_Init(&htim4) != HAL_OK)
+ 645              		.loc 1 257 7
+ 646 007c 1E48     		ldr	r0, .L30
+ 647 007e FFF7FEFF 		bl	HAL_TIM_IC_Init
+ 648 0082 0346     		mov	r3, r0
+ 649              		.loc 1 257 6
+ 650 0084 002B     		cmp	r3, #0
+ 651 0086 01D0     		beq	.L25
+ 258:Core/Src/main.c ****   {
+ 259:Core/Src/main.c ****     Error_Handler();
+ 652              		.loc 1 259 5
+ 653 0088 FFF7FEFF 		bl	Error_Handler
+ 654              	.L25:
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 17
+
+
+ 260:Core/Src/main.c ****   }
+ 261:Core/Src/main.c ****   sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+ 655              		.loc 1 261 37
+ 656 008c 0023     		movs	r3, #0
+ 657 008e 3B61     		str	r3, [r7, #16]
+ 262:Core/Src/main.c ****   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+ 658              		.loc 1 262 33
+ 659 0090 0023     		movs	r3, #0
+ 660 0092 7B61     		str	r3, [r7, #20]
+ 263:Core/Src/main.c ****   if (HAL_TIMEx_MasterConfigSynchronization(&htim4, &sMasterConfig) != HAL_OK)
+ 661              		.loc 1 263 7
+ 662 0094 07F11003 		add	r3, r7, #16
+ 663 0098 1946     		mov	r1, r3
+ 664 009a 1748     		ldr	r0, .L30
+ 665 009c FFF7FEFF 		bl	HAL_TIMEx_MasterConfigSynchronization
+ 666 00a0 0346     		mov	r3, r0
+ 667              		.loc 1 263 6
+ 668 00a2 002B     		cmp	r3, #0
+ 669 00a4 01D0     		beq	.L26
+ 264:Core/Src/main.c ****   {
+ 265:Core/Src/main.c ****     Error_Handler();
+ 670              		.loc 1 265 5
+ 671 00a6 FFF7FEFF 		bl	Error_Handler
+ 672              	.L26:
  266:Core/Src/main.c ****   }
- 267:Core/Src/main.c **** }
- 678              		.loc 1 267 1
- 679 0098 00BF     		nop
- 680 009a 0837     		adds	r7, r7, #8
- 681              	.LCFI20:
- 682              		.cfi_def_cfa_offset 8
- 683 009c BD46     		mov	sp, r7
- 684              	.LCFI21:
- 685              		.cfi_def_cfa_register 13
- 686              		@ sp needed
- 687 009e 80BD     		pop	{r7, pc}
- 688              	.L27:
- 689              		.align	2
- 690              	.L26:
- 691 00a0 00000000 		.word	counter
- 692 00a4 00000240 		.word	1073872896
- 693              		.cfi_endproc
- 694              	.LFE134:
- 696              		.section	.text.Error_Handler,"ax",%progbits
- 697              		.align	1
- 698              		.global	Error_Handler
- 699              		.syntax unified
- 700              		.thumb
- 701              		.thumb_func
- 703              	Error_Handler:
- 704              	.LFB135:
- 268:Core/Src/main.c **** 
- 269:Core/Src/main.c **** /* USER CODE END 4 */
- 270:Core/Src/main.c **** 
- 271:Core/Src/main.c **** /**
- 272:Core/Src/main.c ****   * @brief  This function is executed in case of error occurrence.
- 273:Core/Src/main.c ****   * @retval None
- 274:Core/Src/main.c ****   */
- 275:Core/Src/main.c **** void Error_Handler(void)
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 18
+ 267:Core/Src/main.c ****   sConfigIC.ICPolarity = TIM_INPUTCHANNELPOLARITY_RISING;
+ 673              		.loc 1 267 24
+ 674 00aa 0023     		movs	r3, #0
+ 675 00ac 3B60     		str	r3, [r7]
+ 268:Core/Src/main.c ****   sConfigIC.ICSelection = TIM_ICSELECTION_DIRECTTI;
+ 676              		.loc 1 268 25
+ 677 00ae 0123     		movs	r3, #1
+ 678 00b0 7B60     		str	r3, [r7, #4]
+ 269:Core/Src/main.c ****   sConfigIC.ICPrescaler = TIM_ICPSC_DIV1;
+ 679              		.loc 1 269 25
+ 680 00b2 0023     		movs	r3, #0
+ 681 00b4 BB60     		str	r3, [r7, #8]
+ 270:Core/Src/main.c ****   sConfigIC.ICFilter = 0;
+ 682              		.loc 1 270 22
+ 683 00b6 0023     		movs	r3, #0
+ 684 00b8 FB60     		str	r3, [r7, #12]
+ 271:Core/Src/main.c ****   if (HAL_TIM_IC_ConfigChannel(&htim4, &sConfigIC, TIM_CHANNEL_1) != HAL_OK)
+ 685              		.loc 1 271 7
+ 686 00ba 3B46     		mov	r3, r7
+ 687 00bc 0022     		movs	r2, #0
+ 688 00be 1946     		mov	r1, r3
+ 689 00c0 0D48     		ldr	r0, .L30
+ 690 00c2 FFF7FEFF 		bl	HAL_TIM_IC_ConfigChannel
+ 691 00c6 0346     		mov	r3, r0
+ 692              		.loc 1 271 6
+ 693 00c8 002B     		cmp	r3, #0
+ 694 00ca 01D0     		beq	.L27
+ 272:Core/Src/main.c ****   {
+ 273:Core/Src/main.c ****     Error_Handler();
+ 695              		.loc 1 273 5
+ 696 00cc FFF7FEFF 		bl	Error_Handler
+ 697              	.L27:
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 18
 
 
- 276:Core/Src/main.c **** {
- 705              		.loc 1 276 1
- 706              		.cfi_startproc
- 707              		@ args = 0, pretend = 0, frame = 0
- 708              		@ frame_needed = 1, uses_anonymous_args = 0
- 709              		@ link register save eliminated.
- 710 0000 80B4     		push	{r7}
- 711              	.LCFI22:
- 712              		.cfi_def_cfa_offset 4
- 713              		.cfi_offset 7, -4
- 714 0002 00AF     		add	r7, sp, #0
- 715              	.LCFI23:
- 716              		.cfi_def_cfa_register 7
- 717              	.LBB10:
- 718              	.LBB11:
- 719              		.file 2 "Drivers/CMSIS/Include/cmsis_gcc.h"
+ 274:Core/Src/main.c ****   }
+ 275:Core/Src/main.c ****   sConfigIC.ICPolarity = TIM_INPUTCHANNELPOLARITY_FALLING;
+ 698              		.loc 1 275 24
+ 699 00d0 0223     		movs	r3, #2
+ 700 00d2 3B60     		str	r3, [r7]
+ 276:Core/Src/main.c ****   sConfigIC.ICSelection = TIM_ICSELECTION_INDIRECTTI;
+ 701              		.loc 1 276 25
+ 702 00d4 0223     		movs	r3, #2
+ 703 00d6 7B60     		str	r3, [r7, #4]
+ 277:Core/Src/main.c ****   if (HAL_TIM_IC_ConfigChannel(&htim4, &sConfigIC, TIM_CHANNEL_2) != HAL_OK)
+ 704              		.loc 1 277 7
+ 705 00d8 3B46     		mov	r3, r7
+ 706 00da 0422     		movs	r2, #4
+ 707 00dc 1946     		mov	r1, r3
+ 708 00de 0648     		ldr	r0, .L30
+ 709 00e0 FFF7FEFF 		bl	HAL_TIM_IC_ConfigChannel
+ 710 00e4 0346     		mov	r3, r0
+ 711              		.loc 1 277 6
+ 712 00e6 002B     		cmp	r3, #0
+ 713 00e8 01D0     		beq	.L29
+ 278:Core/Src/main.c ****   {
+ 279:Core/Src/main.c ****     Error_Handler();
+ 714              		.loc 1 279 5
+ 715 00ea FFF7FEFF 		bl	Error_Handler
+ 716              	.L29:
+ 280:Core/Src/main.c ****   }
+ 281:Core/Src/main.c ****   /* USER CODE BEGIN TIM4_Init 2 */
+ 282:Core/Src/main.c **** 
+ 283:Core/Src/main.c ****   /* USER CODE END TIM4_Init 2 */
+ 284:Core/Src/main.c **** 
+ 285:Core/Src/main.c **** }
+ 717              		.loc 1 285 1
+ 718 00ee 00BF     		nop
+ 719 00f0 2837     		adds	r7, r7, #40
+ 720              	.LCFI11:
+ 721              		.cfi_def_cfa_offset 8
+ 722 00f2 BD46     		mov	sp, r7
+ 723              	.LCFI12:
+ 724              		.cfi_def_cfa_register 13
+ 725              		@ sp needed
+ 726 00f4 80BD     		pop	{r7, pc}
+ 727              	.L31:
+ 728 00f6 00BF     		.align	2
+ 729              	.L30:
+ 730 00f8 00000000 		.word	htim4
+ 731 00fc 00080040 		.word	1073743872
+ 732              		.cfi_endproc
+ 733              	.LFE132:
+ 735              		.section	.text.MX_GPIO_Init,"ax",%progbits
+ 736              		.align	1
+ 737              		.syntax unified
+ 738              		.thumb
+ 739              		.thumb_func
+ 741              	MX_GPIO_Init:
+ 742              	.LFB133:
+ 286:Core/Src/main.c **** 
+ 287:Core/Src/main.c **** /**
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 19
+
+
+ 288:Core/Src/main.c ****   * @brief GPIO Initialization Function
+ 289:Core/Src/main.c ****   * @param None
+ 290:Core/Src/main.c ****   * @retval None
+ 291:Core/Src/main.c ****   */
+ 292:Core/Src/main.c **** static void MX_GPIO_Init(void)
+ 293:Core/Src/main.c **** {
+ 743              		.loc 1 293 1
+ 744              		.cfi_startproc
+ 745              		@ args = 0, pretend = 0, frame = 40
+ 746              		@ frame_needed = 1, uses_anonymous_args = 0
+ 747 0000 80B5     		push	{r7, lr}
+ 748              	.LCFI13:
+ 749              		.cfi_def_cfa_offset 8
+ 750              		.cfi_offset 7, -8
+ 751              		.cfi_offset 14, -4
+ 752 0002 8AB0     		sub	sp, sp, #40
+ 753              	.LCFI14:
+ 754              		.cfi_def_cfa_offset 48
+ 755 0004 00AF     		add	r7, sp, #0
+ 756              	.LCFI15:
+ 757              		.cfi_def_cfa_register 7
+ 294:Core/Src/main.c ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
+ 758              		.loc 1 294 20
+ 759 0006 07F11403 		add	r3, r7, #20
+ 760 000a 0022     		movs	r2, #0
+ 761 000c 1A60     		str	r2, [r3]
+ 762 000e 5A60     		str	r2, [r3, #4]
+ 763 0010 9A60     		str	r2, [r3, #8]
+ 764 0012 DA60     		str	r2, [r3, #12]
+ 765 0014 1A61     		str	r2, [r3, #16]
+ 766              	.LBB6:
+ 295:Core/Src/main.c **** /* USER CODE BEGIN MX_GPIO_Init_1 */
+ 296:Core/Src/main.c **** /* USER CODE END MX_GPIO_Init_1 */
+ 297:Core/Src/main.c **** 
+ 298:Core/Src/main.c ****   /* GPIO Ports Clock Enable */
+ 299:Core/Src/main.c ****   __HAL_RCC_GPIOC_CLK_ENABLE();
+ 767              		.loc 1 299 3
+ 768 0016 0023     		movs	r3, #0
+ 769 0018 3B61     		str	r3, [r7, #16]
+ 770 001a 424B     		ldr	r3, .L33
+ 771 001c 1B6B     		ldr	r3, [r3, #48]
+ 772 001e 414A     		ldr	r2, .L33
+ 773 0020 43F00403 		orr	r3, r3, #4
+ 774 0024 1363     		str	r3, [r2, #48]
+ 775 0026 3F4B     		ldr	r3, .L33
+ 776 0028 1B6B     		ldr	r3, [r3, #48]
+ 777 002a 03F00403 		and	r3, r3, #4
+ 778 002e 3B61     		str	r3, [r7, #16]
+ 779 0030 3B69     		ldr	r3, [r7, #16]
+ 780              	.LBE6:
+ 781              	.LBB7:
+ 300:Core/Src/main.c ****   __HAL_RCC_GPIOH_CLK_ENABLE();
+ 782              		.loc 1 300 3
+ 783 0032 0023     		movs	r3, #0
+ 784 0034 FB60     		str	r3, [r7, #12]
+ 785 0036 3B4B     		ldr	r3, .L33
+ 786 0038 1B6B     		ldr	r3, [r3, #48]
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 20
+
+
+ 787 003a 3A4A     		ldr	r2, .L33
+ 788 003c 43F08003 		orr	r3, r3, #128
+ 789 0040 1363     		str	r3, [r2, #48]
+ 790 0042 384B     		ldr	r3, .L33
+ 791 0044 1B6B     		ldr	r3, [r3, #48]
+ 792 0046 03F08003 		and	r3, r3, #128
+ 793 004a FB60     		str	r3, [r7, #12]
+ 794 004c FB68     		ldr	r3, [r7, #12]
+ 795              	.LBE7:
+ 796              	.LBB8:
+ 301:Core/Src/main.c ****   __HAL_RCC_GPIOA_CLK_ENABLE();
+ 797              		.loc 1 301 3
+ 798 004e 0023     		movs	r3, #0
+ 799 0050 BB60     		str	r3, [r7, #8]
+ 800 0052 344B     		ldr	r3, .L33
+ 801 0054 1B6B     		ldr	r3, [r3, #48]
+ 802 0056 334A     		ldr	r2, .L33
+ 803 0058 43F00103 		orr	r3, r3, #1
+ 804 005c 1363     		str	r3, [r2, #48]
+ 805 005e 314B     		ldr	r3, .L33
+ 806 0060 1B6B     		ldr	r3, [r3, #48]
+ 807 0062 03F00103 		and	r3, r3, #1
+ 808 0066 BB60     		str	r3, [r7, #8]
+ 809 0068 BB68     		ldr	r3, [r7, #8]
+ 810              	.LBE8:
+ 811              	.LBB9:
+ 302:Core/Src/main.c ****   __HAL_RCC_GPIOB_CLK_ENABLE();
+ 812              		.loc 1 302 3
+ 813 006a 0023     		movs	r3, #0
+ 814 006c 7B60     		str	r3, [r7, #4]
+ 815 006e 2D4B     		ldr	r3, .L33
+ 816 0070 1B6B     		ldr	r3, [r3, #48]
+ 817 0072 2C4A     		ldr	r2, .L33
+ 818 0074 43F00203 		orr	r3, r3, #2
+ 819 0078 1363     		str	r3, [r2, #48]
+ 820 007a 2A4B     		ldr	r3, .L33
+ 821 007c 1B6B     		ldr	r3, [r3, #48]
+ 822 007e 03F00203 		and	r3, r3, #2
+ 823 0082 7B60     		str	r3, [r7, #4]
+ 824 0084 7B68     		ldr	r3, [r7, #4]
+ 825              	.LBE9:
+ 303:Core/Src/main.c **** 
+ 304:Core/Src/main.c ****   /*Configure GPIO pin Output Level */
+ 305:Core/Src/main.c ****   HAL_GPIO_WritePin(KIT_LED_GPIO_Port, KIT_LED_Pin, GPIO_PIN_RESET);
+ 826              		.loc 1 305 3
+ 827 0086 0022     		movs	r2, #0
+ 828 0088 4FF40051 		mov	r1, #8192
+ 829 008c 2648     		ldr	r0, .L33+4
+ 830 008e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 306:Core/Src/main.c **** 
+ 307:Core/Src/main.c ****   /*Configure GPIO pin Output Level */
+ 308:Core/Src/main.c ****   HAL_GPIO_WritePin(GPIOA, LED_1_Pin|LED_2_Pin|LED_3_Pin|LED_4_Pin
+ 831              		.loc 1 308 3
+ 832 0092 0022     		movs	r2, #0
+ 833 0094 F821     		movs	r1, #248
+ 834 0096 2548     		ldr	r0, .L33+8
+ 835 0098 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 21
+
+
+ 309:Core/Src/main.c ****                           |LED_5_Pin, GPIO_PIN_RESET);
+ 310:Core/Src/main.c **** 
+ 311:Core/Src/main.c ****   /*Configure GPIO pin Output Level */
+ 312:Core/Src/main.c ****   HAL_GPIO_WritePin(HCSR04_TRIGGER_GPIO_Port, HCSR04_TRIGGER_Pin, GPIO_PIN_RESET);
+ 836              		.loc 1 312 3
+ 837 009c 0022     		movs	r2, #0
+ 838 009e 4FF40051 		mov	r1, #8192
+ 839 00a2 2348     		ldr	r0, .L33+12
+ 840 00a4 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 313:Core/Src/main.c **** 
+ 314:Core/Src/main.c ****   /*Configure GPIO pin : KIT_LED_Pin */
+ 315:Core/Src/main.c ****   GPIO_InitStruct.Pin = KIT_LED_Pin;
+ 841              		.loc 1 315 23
+ 842 00a8 4FF40053 		mov	r3, #8192
+ 843 00ac 7B61     		str	r3, [r7, #20]
+ 316:Core/Src/main.c ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+ 844              		.loc 1 316 24
+ 845 00ae 0123     		movs	r3, #1
+ 846 00b0 BB61     		str	r3, [r7, #24]
+ 317:Core/Src/main.c ****   GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 847              		.loc 1 317 24
+ 848 00b2 0023     		movs	r3, #0
+ 849 00b4 FB61     		str	r3, [r7, #28]
+ 318:Core/Src/main.c ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ 850              		.loc 1 318 25
+ 851 00b6 0023     		movs	r3, #0
+ 852 00b8 3B62     		str	r3, [r7, #32]
+ 319:Core/Src/main.c ****   HAL_GPIO_Init(KIT_LED_GPIO_Port, &GPIO_InitStruct);
+ 853              		.loc 1 319 3
+ 854 00ba 07F11403 		add	r3, r7, #20
+ 855 00be 1946     		mov	r1, r3
+ 856 00c0 1948     		ldr	r0, .L33+4
+ 857 00c2 FFF7FEFF 		bl	HAL_GPIO_Init
+ 320:Core/Src/main.c **** 
+ 321:Core/Src/main.c ****   /*Configure GPIO pins : LED_1_Pin LED_2_Pin LED_3_Pin LED_4_Pin
+ 322:Core/Src/main.c ****                            LED_5_Pin */
+ 323:Core/Src/main.c ****   GPIO_InitStruct.Pin = LED_1_Pin|LED_2_Pin|LED_3_Pin|LED_4_Pin
+ 858              		.loc 1 323 23
+ 859 00c6 F823     		movs	r3, #248
+ 860 00c8 7B61     		str	r3, [r7, #20]
+ 324:Core/Src/main.c ****                           |LED_5_Pin;
+ 325:Core/Src/main.c ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+ 861              		.loc 1 325 24
+ 862 00ca 0123     		movs	r3, #1
+ 863 00cc BB61     		str	r3, [r7, #24]
+ 326:Core/Src/main.c ****   GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 864              		.loc 1 326 24
+ 865 00ce 0023     		movs	r3, #0
+ 866 00d0 FB61     		str	r3, [r7, #28]
+ 327:Core/Src/main.c ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ 867              		.loc 1 327 25
+ 868 00d2 0023     		movs	r3, #0
+ 869 00d4 3B62     		str	r3, [r7, #32]
+ 328:Core/Src/main.c ****   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 870              		.loc 1 328 3
+ 871 00d6 07F11403 		add	r3, r7, #20
+ 872 00da 1946     		mov	r1, r3
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 22
+
+
+ 873 00dc 1348     		ldr	r0, .L33+8
+ 874 00de FFF7FEFF 		bl	HAL_GPIO_Init
+ 329:Core/Src/main.c **** 
+ 330:Core/Src/main.c ****   /*Configure GPIO pins : BUTTON_2_Pin BUTTON_1_Pin */
+ 331:Core/Src/main.c ****   GPIO_InitStruct.Pin = BUTTON_2_Pin|BUTTON_1_Pin;
+ 875              		.loc 1 331 23
+ 876 00e2 4FF41043 		mov	r3, #36864
+ 877 00e6 7B61     		str	r3, [r7, #20]
+ 332:Core/Src/main.c ****   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+ 878              		.loc 1 332 24
+ 879 00e8 0023     		movs	r3, #0
+ 880 00ea BB61     		str	r3, [r7, #24]
+ 333:Core/Src/main.c ****   GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 881              		.loc 1 333 24
+ 882 00ec 0023     		movs	r3, #0
+ 883 00ee FB61     		str	r3, [r7, #28]
+ 334:Core/Src/main.c ****   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 884              		.loc 1 334 3
+ 885 00f0 07F11403 		add	r3, r7, #20
+ 886 00f4 1946     		mov	r1, r3
+ 887 00f6 0E48     		ldr	r0, .L33+12
+ 888 00f8 FFF7FEFF 		bl	HAL_GPIO_Init
+ 335:Core/Src/main.c **** 
+ 336:Core/Src/main.c ****   /*Configure GPIO pin : HCSR04_TRIGGER_Pin */
+ 337:Core/Src/main.c ****   GPIO_InitStruct.Pin = HCSR04_TRIGGER_Pin;
+ 889              		.loc 1 337 23
+ 890 00fc 4FF40053 		mov	r3, #8192
+ 891 0100 7B61     		str	r3, [r7, #20]
+ 338:Core/Src/main.c ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+ 892              		.loc 1 338 24
+ 893 0102 0123     		movs	r3, #1
+ 894 0104 BB61     		str	r3, [r7, #24]
+ 339:Core/Src/main.c ****   GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 895              		.loc 1 339 24
+ 896 0106 0023     		movs	r3, #0
+ 897 0108 FB61     		str	r3, [r7, #28]
+ 340:Core/Src/main.c ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ 898              		.loc 1 340 25
+ 899 010a 0023     		movs	r3, #0
+ 900 010c 3B62     		str	r3, [r7, #32]
+ 341:Core/Src/main.c ****   HAL_GPIO_Init(HCSR04_TRIGGER_GPIO_Port, &GPIO_InitStruct);
+ 901              		.loc 1 341 3
+ 902 010e 07F11403 		add	r3, r7, #20
+ 903 0112 1946     		mov	r1, r3
+ 904 0114 0648     		ldr	r0, .L33+12
+ 905 0116 FFF7FEFF 		bl	HAL_GPIO_Init
+ 342:Core/Src/main.c **** 
+ 343:Core/Src/main.c **** /* USER CODE BEGIN MX_GPIO_Init_2 */
+ 344:Core/Src/main.c **** /* USER CODE END MX_GPIO_Init_2 */
+ 345:Core/Src/main.c **** }
+ 906              		.loc 1 345 1
+ 907 011a 00BF     		nop
+ 908 011c 2837     		adds	r7, r7, #40
+ 909              	.LCFI16:
+ 910              		.cfi_def_cfa_offset 8
+ 911 011e BD46     		mov	sp, r7
+ 912              	.LCFI17:
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 23
+
+
+ 913              		.cfi_def_cfa_register 13
+ 914              		@ sp needed
+ 915 0120 80BD     		pop	{r7, pc}
+ 916              	.L34:
+ 917 0122 00BF     		.align	2
+ 918              	.L33:
+ 919 0124 00380240 		.word	1073887232
+ 920 0128 00080240 		.word	1073874944
+ 921 012c 00000240 		.word	1073872896
+ 922 0130 00040240 		.word	1073873920
+ 923              		.cfi_endproc
+ 924              	.LFE133:
+ 926              		.section	.text.HAL_TIM_IC_CaptureCallback,"ax",%progbits
+ 927              		.align	1
+ 928              		.global	HAL_TIM_IC_CaptureCallback
+ 929              		.syntax unified
+ 930              		.thumb
+ 931              		.thumb_func
+ 933              	HAL_TIM_IC_CaptureCallback:
+ 934              	.LFB134:
+ 346:Core/Src/main.c **** 
+ 347:Core/Src/main.c **** /* USER CODE BEGIN 4 */
+ 348:Core/Src/main.c **** 
+ 349:Core/Src/main.c **** void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
+ 350:Core/Src/main.c **** {
+ 935              		.loc 1 350 1
+ 936              		.cfi_startproc
+ 937              		@ args = 0, pretend = 0, frame = 8
+ 938              		@ frame_needed = 1, uses_anonymous_args = 0
+ 939 0000 80B5     		push	{r7, lr}
+ 940              	.LCFI18:
+ 941              		.cfi_def_cfa_offset 8
+ 942              		.cfi_offset 7, -8
+ 943              		.cfi_offset 14, -4
+ 944 0002 82B0     		sub	sp, sp, #8
+ 945              	.LCFI19:
+ 946              		.cfi_def_cfa_offset 16
+ 947 0004 00AF     		add	r7, sp, #0
+ 948              	.LCFI20:
+ 949              		.cfi_def_cfa_register 7
+ 950 0006 7860     		str	r0, [r7, #4]
+ 351:Core/Src/main.c ****   if(htim == &htim4)
+ 951              		.loc 1 351 5
+ 952 0008 7B68     		ldr	r3, [r7, #4]
+ 953 000a 0E4A     		ldr	r2, .L38
+ 954 000c 9342     		cmp	r3, r2
+ 955 000e 14D1     		bne	.L37
+ 352:Core/Src/main.c ****   { 
+ 353:Core/Src/main.c ****     if (htim4.Channel == HAL_TIM_ACTIVE_CHANNEL_2)
+ 956              		.loc 1 353 14
+ 957 0010 0C4B     		ldr	r3, .L38
+ 958 0012 1B7F     		ldrb	r3, [r3, #28]	@ zero_extendqisi2
+ 959              		.loc 1 353 8
+ 960 0014 022B     		cmp	r3, #2
+ 961 0016 10D1     		bne	.L37
+ 354:Core/Src/main.c ****     {   
+ 355:Core/Src/main.c ****       gElapsed = htim4.Instance->CCR2 - htim4.Instance->CCR1; /* Captura final - Inicial */
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 24
+
+
+ 962              		.loc 1 355 23
+ 963 0018 0A4B     		ldr	r3, .L38
+ 964 001a 1B68     		ldr	r3, [r3]
+ 965              		.loc 1 355 32
+ 966 001c 9A6B     		ldr	r2, [r3, #56]
+ 967              		.loc 1 355 46
+ 968 001e 094B     		ldr	r3, .L38
+ 969 0020 1B68     		ldr	r3, [r3]
+ 970              		.loc 1 355 55
+ 971 0022 5B6B     		ldr	r3, [r3, #52]
+ 972              		.loc 1 355 39
+ 973 0024 D31A     		subs	r3, r2, r3
+ 974              		.loc 1 355 16
+ 975 0026 084A     		ldr	r2, .L38+4
+ 976 0028 1360     		str	r3, [r2]
+ 356:Core/Src/main.c ****       HAL_TIM_IC_Stop(&htim4, TIM_CHANNEL_1);
+ 977              		.loc 1 356 7
+ 978 002a 0021     		movs	r1, #0
+ 979 002c 0548     		ldr	r0, .L38
+ 980 002e FFF7FEFF 		bl	HAL_TIM_IC_Stop
+ 357:Core/Src/main.c ****       HAL_TIM_IC_Stop_IT(&htim4, TIM_CHANNEL_2);       
+ 981              		.loc 1 357 7
+ 982 0032 0421     		movs	r1, #4
+ 983 0034 0348     		ldr	r0, .L38
+ 984 0036 FFF7FEFF 		bl	HAL_TIM_IC_Stop_IT
+ 985              	.L37:
+ 358:Core/Src/main.c ****     }
+ 359:Core/Src/main.c ****   }
+ 360:Core/Src/main.c **** }
+ 986              		.loc 1 360 1
+ 987 003a 00BF     		nop
+ 988 003c 0837     		adds	r7, r7, #8
+ 989              	.LCFI21:
+ 990              		.cfi_def_cfa_offset 8
+ 991 003e BD46     		mov	sp, r7
+ 992              	.LCFI22:
+ 993              		.cfi_def_cfa_register 13
+ 994              		@ sp needed
+ 995 0040 80BD     		pop	{r7, pc}
+ 996              	.L39:
+ 997 0042 00BF     		.align	2
+ 998              	.L38:
+ 999 0044 00000000 		.word	htim4
+ 1000 0048 00000000 		.word	gElapsed
+ 1001              		.cfi_endproc
+ 1002              	.LFE134:
+ 1004              		.section	.text.Error_Handler,"ax",%progbits
+ 1005              		.align	1
+ 1006              		.global	Error_Handler
+ 1007              		.syntax unified
+ 1008              		.thumb
+ 1009              		.thumb_func
+ 1011              	Error_Handler:
+ 1012              	.LFB135:
+ 361:Core/Src/main.c **** 
+ 362:Core/Src/main.c **** /* USER CODE END 4 */
+ 363:Core/Src/main.c **** 
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 25
+
+
+ 364:Core/Src/main.c **** /**
+ 365:Core/Src/main.c ****   * @brief  This function is executed in case of error occurrence.
+ 366:Core/Src/main.c ****   * @retval None
+ 367:Core/Src/main.c ****   */
+ 368:Core/Src/main.c **** void Error_Handler(void)
+ 369:Core/Src/main.c **** {
+ 1013              		.loc 1 369 1
+ 1014              		.cfi_startproc
+ 1015              		@ args = 0, pretend = 0, frame = 0
+ 1016              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1017              		@ link register save eliminated.
+ 1018 0000 80B4     		push	{r7}
+ 1019              	.LCFI23:
+ 1020              		.cfi_def_cfa_offset 4
+ 1021              		.cfi_offset 7, -4
+ 1022 0002 00AF     		add	r7, sp, #0
+ 1023              	.LCFI24:
+ 1024              		.cfi_def_cfa_register 7
+ 1025              	.LBB10:
+ 1026              	.LBB11:
+ 1027              		.file 2 "Drivers/CMSIS/Include/cmsis_gcc.h"
    1:Drivers/CMSIS/Include/cmsis_gcc.h **** /**************************************************************************//**
    2:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @file     cmsis_gcc.h
    3:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @brief    CMSIS compiler GCC header file
@@ -1073,14 +1498,14 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 1
   34:Drivers/CMSIS/Include/cmsis_gcc.h **** /* Fallback for __has_builtin */
   35:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef __has_builtin
   36:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __has_builtin(x) (0)
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 26
+
+
   37:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
   38:Drivers/CMSIS/Include/cmsis_gcc.h **** 
   39:Drivers/CMSIS/Include/cmsis_gcc.h **** /* CMSIS compiler specific defines */
   40:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __ASM
   41:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __ASM                                  __asm
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 19
-
-
   42:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
   43:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __INLINE
   44:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __INLINE                               inline
@@ -1133,14 +1558,14 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 1
   91:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
   92:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT16_READ(addr)          (((const struct T_UINT16_READ *)(const void *)(add
   93:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 27
+
+
   94:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32_WRITE
   95:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
   96:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
   97:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
   98:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT32_WRITE { uint32_t v; };
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 20
-
-
   99:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
  100:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32_WRITE(addr, val)    (void)((((struct T_UINT32_WRITE *)(void *)(addr))-
  101:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
@@ -1185,82 +1610,88 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 1
  140:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __disable_irq(void)
  141:Drivers/CMSIS/Include/cmsis_gcc.h **** {
  142:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("cpsid i" : : : "memory");
- 720              		.loc 2 142 3
- 721              		.syntax unified
- 722              	@ 142 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 723 0004 72B6     		cpsid i
- 724              	@ 0 "" 2
+ 1028              		.loc 2 142 3
+ 1029              		.syntax unified
+ 1030              	@ 142 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 1031 0004 72B6     		cpsid i
+ 1032              	@ 0 "" 2
  143:Drivers/CMSIS/Include/cmsis_gcc.h **** }
- 725              		.loc 2 143 1
- 726              		.thumb
- 727              		.syntax unified
- 728 0006 00BF     		nop
- 729              	.L29:
- 730              	.LBE11:
- 731              	.LBE10:
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 21
+ 1033              		.loc 2 143 1
+ 1034              		.thumb
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 28
 
 
- 277:Core/Src/main.c ****   /* USER CODE BEGIN Error_Handler_Debug */
- 278:Core/Src/main.c ****   /* User can add his own implementation to report the HAL error return state */
- 279:Core/Src/main.c ****   __disable_irq();
- 280:Core/Src/main.c ****   while (1)
- 732              		.loc 1 280 9 discriminator 1
- 733 0008 FEE7     		b	.L29
- 734              		.cfi_endproc
- 735              	.LFE135:
- 737              		.text
- 738              	.Letext0:
- 739              		.file 3 "c:\\arm-gcc\\tools\\tools\\arm-gnu-toolchain-11.3.rel1-mingw-w64-i686-arm-none-eabi\\arm-
- 740              		.file 4 "c:\\arm-gcc\\tools\\tools\\arm-gnu-toolchain-11.3.rel1-mingw-w64-i686-arm-none-eabi\\arm-
- 741              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f411xe.h"
- 742              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 743              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
- 744              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
- 745              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
- 746              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 747              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
- 748              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h"
- 749              		.file 13 "Core/Inc/button.h"
- 750              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s 			page 22
+ 1035              		.syntax unified
+ 1036 0006 00BF     		nop
+ 1037              	.L41:
+ 1038              	.LBE11:
+ 1039              	.LBE10:
+ 370:Core/Src/main.c ****   /* USER CODE BEGIN Error_Handler_Debug */
+ 371:Core/Src/main.c ****   /* User can add his own implementation to report the HAL error return state */
+ 372:Core/Src/main.c ****   __disable_irq();
+ 373:Core/Src/main.c ****   while (1)
+ 1040              		.loc 1 373 9 discriminator 1
+ 1041 0008 FEE7     		b	.L41
+ 1042              		.cfi_endproc
+ 1043              	.LFE135:
+ 1045              		.text
+ 1046              	.Letext0:
+ 1047              		.file 3 "c:\\arm-gcc\\tools\\tools\\arm-gnu-toolchain-11.3.rel1-mingw-w64-i686-arm-none-eabi\\arm-
+ 1048              		.file 4 "c:\\arm-gcc\\tools\\tools\\arm-gnu-toolchain-11.3.rel1-mingw-w64-i686-arm-none-eabi\\arm-
+ 1049              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f411xe.h"
+ 1050              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 1051              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+ 1052              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+ 1053              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 1054              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 1055              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 1056              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h"
+ 1057              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s 			page 29
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s:24     .bss.htim4:00000000 htim4
-C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s:21     .bss.htim4:00000000 $d
-C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s:31     .data.counter:00000000 counter
-C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s:28     .data.counter:00000000 $d
-C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s:34     .text.main:00000000 $t
-C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s:40     .text.main:00000000 main
-C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s:146    .text.SystemClock_Config:00000000 SystemClock_Config
-C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s:413    .text.MX_GPIO_Init:00000000 MX_GPIO_Init
-C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s:293    .text.MX_TIM4_Init:00000000 MX_TIM4_Init
-C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s:132    .text.main:00000084 $d
-C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s:140    .text.SystemClock_Config:00000000 $t
-C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s:703    .text.Error_Handler:00000000 Error_Handler
-C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s:282    .text.SystemClock_Config:000000c8 $d
-C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s:288    .text.MX_TIM4_Init:00000000 $t
-C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s:402    .text.MX_TIM4_Init:00000094 $d
-C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s:408    .text.MX_GPIO_Init:00000000 $t
-C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s:569    .text.MX_GPIO_Init:000000f8 $d
-C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s:577    .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
-C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s:583    .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
-C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s:691    .text.HAL_TIM_PeriodElapsedCallback:000000a0 $d
-C:\Users\eduap\AppData\Local\Temp\ccDN37Ku.s:697    .text.Error_Handler:00000000 $t
+C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s:24     .bss.htim4:00000000 htim4
+C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s:21     .bss.htim4:00000000 $d
+C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s:31     .bss.gElapsed:00000000 gElapsed
+C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s:28     .bss.gElapsed:00000000 $d
+C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s:37     .text.main:00000000 $t
+C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s:43     .text.main:00000000 main
+C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s:413    .text.SystemClock_Config:00000000 SystemClock_Config
+C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s:741    .text.MX_GPIO_Init:00000000 MX_GPIO_Init
+C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s:560    .text.MX_TIM4_Init:00000000 MX_TIM4_Init
+C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s:395    .text.main:00000250 $d
+C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s:407    .text.SystemClock_Config:00000000 $t
+C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s:1011   .text.Error_Handler:00000000 Error_Handler
+C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s:549    .text.SystemClock_Config:000000c8 $d
+C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s:555    .text.MX_TIM4_Init:00000000 $t
+C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s:730    .text.MX_TIM4_Init:000000f8 $d
+C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s:736    .text.MX_GPIO_Init:00000000 $t
+C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s:919    .text.MX_GPIO_Init:00000124 $d
+C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s:927    .text.HAL_TIM_IC_CaptureCallback:00000000 $t
+C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s:933    .text.HAL_TIM_IC_CaptureCallback:00000000 HAL_TIM_IC_CaptureCallback
+C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s:999    .text.HAL_TIM_IC_CaptureCallback:00000044 $d
+C:\Users\eduap\AppData\Local\Temp\ccHHojEo.s:1005   .text.Error_Handler:00000000 $t
 
 UNDEFINED SYMBOLS
+__aeabi_ui2d
+__aeabi_dmul
+__aeabi_d2uiz
 HAL_Init
-HAL_TIM_Base_Start_IT
-HAL_GPIO_TogglePin
+HAL_GPIO_ReadPin
+HAL_GPIO_WritePin
 HAL_Delay
-button_release
+HAL_TIM_IC_Start
+HAL_TIM_IC_Start_IT
 memset
 HAL_RCC_OscConfig
 HAL_RCC_ClockConfig
 HAL_TIM_Base_Init
 HAL_TIM_ConfigClockSource
+HAL_TIM_IC_Init
 HAL_TIMEx_MasterConfigSynchronization
-HAL_GPIO_WritePin
+HAL_TIM_IC_ConfigChannel
 HAL_GPIO_Init
+HAL_TIM_IC_Stop
+HAL_TIM_IC_Stop_IT
