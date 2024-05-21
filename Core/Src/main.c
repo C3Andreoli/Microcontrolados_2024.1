@@ -66,6 +66,7 @@ uint32_t read[2];
 uint32_t bitNumber[2];
 uint32_t cent[2];
 uint32_t test[2];
+uint8_t answer;
 /* USER CODE END 0 */
 
 /**
@@ -103,6 +104,7 @@ int main(void)
   
   /* USER CODE BEGIN 2 */
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+  TIM3 -> CCR1 = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -110,20 +112,46 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
+    
+    answer = 0;
     HAL_ADC_Start(&hadc1);
-    read[0] = HAL_ADC_GetValue(&hadc1);
-    test[0] = (read[0] * cent[0]) / bitNumber[0];
-    uint32_t integerPart = test[0];
-    uint32_t decimalPart = (((read[0] * 100 * cent[0]) / bitNumber[0]) - integerPart * 100);
-    // sprintf(writeBuffer, "Valor lido %d.%02d %% \r \n",integerPart, decimalPart);
-    // CDC_Transmit_FS(writeBuffer,strlen(writeBuffer));
-    // HAL_Delay(100);
-
-    // sprintf()
-    /* USER CODE BEGIN 3 */
-  }
-  /* USER CODE END 3 */
+    gUSBRxBuffer[0] = 0;
+    sprintf(writeBuffer, "Selecione uma funcao: \r \n");
+    CDC_Transmit_FS(writeBuffer,strlen(writeBuffer));
+    while (answer == 0) {
+        if (gUSBRxBuffer[0] == 112 || gUSBRxBuffer[0] ==  80 || gUSBRxBuffer[0] == 37){
+          read[0] = HAL_ADC_GetValue(&hadc1);
+          test[0] = (read[0] * cent[0]) / bitNumber[0];
+          uint32_t integerPart = test[0];
+          uint32_t decimalPart = (((read[0] * 100 * cent[0]) / bitNumber[0]) - integerPart * 100);
+          sprintf(writeBuffer, "O percentual do fundo de escala do A/D eh de %d.%02d %%, ",integerPart, decimalPart);
+          CDC_Transmit_FS(writeBuffer,strlen(writeBuffer));
+          HAL_Delay(100);
+          sprintf(writeBuffer, " representando uma tensao de %d mV \r \n",(read[0] * 3300)/4095);
+          CDC_Transmit_FS(writeBuffer,strlen(writeBuffer));
+          answer = 1;
+        }
+        else if (gUSBRxBuffer[0] == 83 || gUSBRxBuffer[0] == 115){
+          TIM3 -> CCR1 += 12000 * (6.25/100);
+          sprintf(writeBuffer, "O duty cycle atual do PWM eh %.2d \r \n", TIM3 -> CCR1);
+          CDC_Transmit_FS(writeBuffer,strlen(writeBuffer));
+          answer = 1;
+        }
+          
+        else if (gUSBRxBuffer[0] == 68 || gUSBRxBuffer[0] == 100){
+          TIM3 -> CCR1 -= 12000 * (6.25/100);
+          sprintf(writeBuffer, "O duty cycle atual do PWM eh %.2d \r \n", TIM3 -> CCR1);
+          CDC_Transmit_FS(writeBuffer,strlen(writeBuffer));
+          answer = 1;
+        }
+        HAL_Delay(50);
+      }
+    }
 }
+    
+  /* USER CODE BEGIN 3 */
+  /* USER CODE END 3 */
+
 
 /**
   * @brief System Clock Configuration

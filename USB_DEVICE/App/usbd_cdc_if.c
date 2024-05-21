@@ -107,7 +107,7 @@ uint8_t UserTxBufferFS[APP_TX_DATA_SIZE];
   */
 
 extern USBD_HandleTypeDef hUsbDeviceFS;
-extern gUSBRx
+extern gUSBRxBuffer[255];
 /* USER CODE BEGIN EXPORTED_VARIABLES */
 
 /* USER CODE END EXPORTED_VARIABLES */
@@ -263,8 +263,8 @@ static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
   /* USER CODE BEGIN 6 */
   USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
   USBD_CDC_ReceivePacket(&hUsbDeviceFS);
-  USBD_memset(gUSBRxBuffer,0,255);
-  USBD_memcpy(gUSBRxBuffer, Buf, *Len);
+  memset(gUSBRxBuffer,0,255);
+  memcpy(gUSBRxBuffer, Buf, *Len);
   return (USBD_OK);
   /* USER CODE END 6 */
 }
