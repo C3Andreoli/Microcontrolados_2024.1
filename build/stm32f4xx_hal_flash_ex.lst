@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -26,7 +26,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
   23              		.thumb
   24              		.thumb_func
   26              	HAL_FLASHEx_Erase:
-  27              	.LFB130:
+  27              	.LFB216:
   28              		.file 1 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c"
    1:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** /**
    2:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   ******************************************************************************
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
   28:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****       (#) FLASH Memory Erase functions:
   29:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****            (++) Lock and Unlock the FLASH interface using HAL_FLASH_Unlock() and
   30:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****                 HAL_FLASH_Lock() functions
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 2
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 2
 
 
   31:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****            (++) Erase function: Erase sector, erase all sectors
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
   85:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** /* Private macro -------------------------------------------------------------*/
   86:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** /* Private variables ---------------------------------------------------------*/
   87:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** /** @addtogroup FLASHEx_Private_Variables
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 3
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 3
 
 
   88:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   * @{
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  142:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****     [..]
  143:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****     This subsection provides a set of functions allowing to manage the Extension FLASH
  144:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****     programming operations.
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 4
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 4
 
 
  145:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
   61              		.loc 1 166 3 discriminator 2
   62 001e 2E4B     		ldr	r3, .L10
   63 0020 0122     		movs	r2, #1
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 5
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 5
 
 
   64 0022 1A76     		strb	r2, [r3, #24]
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  186:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
  187:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****       /* if the erase operation is completed, disable the MER Bit */
  188:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****       FLASH->CR &= (~FLASH_MER_BIT);
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 6
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 6
 
 
   99              		.loc 1 188 17
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  135 00a2 002B     		cmp	r3, #0
  136 00a4 03D0     		beq	.L8
  207:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****         {
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 7
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 7
 
 
  208:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****           /* In case of error, stop erase procedure and return the faulty sector*/
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  222:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** }
  172              		.loc 1 222 1
  173 00d0 1846     		mov	r0, r3
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 8
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 8
 
 
  174 00d2 1037     		adds	r7, r7, #16
@@ -435,7 +435,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  185 00d8 00000000 		.word	pFlash
  186 00dc 003C0240 		.word	1073888256
  187              		.cfi_endproc
- 188              	.LFE130:
+ 188              	.LFE216:
  190              		.section	.text.HAL_FLASHEx_Erase_IT,"ax",%progbits
  191              		.align	1
  192              		.global	HAL_FLASHEx_Erase_IT
@@ -443,7 +443,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  194              		.thumb
  195              		.thumb_func
  197              	HAL_FLASHEx_Erase_IT:
- 198              	.LFB131:
+ 198              	.LFB217:
  223:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
  224:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** /**
  225:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   * @brief  Perform a mass erase or erase the specified FLASH memory sectors  with interrupt enable
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  235:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   /* Process Locked */
  236:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   __HAL_LOCK(&pFlash);
  218              		.loc 1 236 3
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 9
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 9
 
 
  219 000c 254B     		ldr	r3, .L17
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  255 0046 0222     		movs	r2, #2
  256 0048 1A70     		strb	r2, [r3]
  255:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****     pFlash.Bank = pEraseInit->Banks;
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 10
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 10
 
 
  257              		.loc 1 255 29
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  298 0084 1A72     		strb	r2, [r3, #8]
  269:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
  270:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****     /*Erase 1st sector and wait for IT*/
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 11
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 11
 
 
  271:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****     FLASH_Erase_Sector(pEraseInit->Sector, pEraseInit->VoltageRange);
@@ -637,7 +637,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  327 00a4 00000000 		.word	pFlash
  328 00a8 003C0240 		.word	1073888256
  329              		.cfi_endproc
- 330              	.LFE131:
+ 330              	.LFE217:
  332              		.section	.text.HAL_FLASHEx_OBProgram,"ax",%progbits
  333              		.align	1
  334              		.global	HAL_FLASHEx_OBProgram
@@ -645,7 +645,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  336              		.thumb
  337              		.thumb_func
  339              	HAL_FLASHEx_OBProgram:
- 340              	.LFB132:
+ 340              	.LFB218:
  276:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
  277:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** /**
  278:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   * @brief   Program option bytes
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  285:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** {
  341              		.loc 1 285 1
  342              		.cfi_startproc
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 12
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 12
 
 
  343              		@ args = 0, pretend = 0, frame = 16
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  384              		.loc 1 298 8
  385 002e 012B     		cmp	r3, #1
  386 0030 0AD1     		bne	.L23
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 13
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 13
 
 
  299:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****     {
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  426 0076 FB73     		strb	r3, [r7, #15]
  427              	.L24:
  314:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   }
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 14
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 14
 
 
  315:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  467              		.loc 1 327 46
  468 00b8 7B68     		ldr	r3, [r7, #4]
  469 00ba 5B69     		ldr	r3, [r3, #20]
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 15
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 15
 
 
  470              		.loc 1 327 14
@@ -877,7 +877,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  496              	.L27:
  497 00d8 00000000 		.word	pFlash
  498              		.cfi_endproc
- 499              	.LFE132:
+ 499              	.LFE218:
  501              		.section	.text.HAL_FLASHEx_OBGetConfig,"ax",%progbits
  502              		.align	1
  503              		.global	HAL_FLASHEx_OBGetConfig
@@ -885,7 +885,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  505              		.thumb
  506              		.thumb_func
  508              	HAL_FLASHEx_OBGetConfig:
- 509              	.LFB133:
+ 509              	.LFB219:
  335:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
  336:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** /**
  337:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   * @brief   Get the Option byte configuration
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  344:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** {
  510              		.loc 1 344 1
  511              		.cfi_startproc
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 16
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 16
 
 
  512              		@ args = 0, pretend = 0, frame = 8
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  553              		.loc 1 357 33
  554 0032 FFF7FEFF 		bl	FLASH_OB_GetBOR
  555 0036 0346     		mov	r3, r0
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 17
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 17
 
 
  556              		.loc 1 357 23
@@ -978,7 +978,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  569              		@ sp needed
  570 0044 80BD     		pop	{r7, pc}
  571              		.cfi_endproc
- 572              	.LFE133:
+ 572              	.LFE219:
  574              		.section	.text.HAL_FLASHEx_AdvOBProgram,"ax",%progbits
  575              		.align	1
  576              		.global	HAL_FLASHEx_AdvOBProgram
@@ -986,7 +986,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  578              		.thumb
  579              		.thumb_func
  581              	HAL_FLASHEx_AdvOBProgram:
- 582              	.LFB134:
+ 582              	.LFB220:
  359:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
  360:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** #if defined(STM32F427xx) || defined(STM32F437xx) || defined(STM32F429xx) || defined(STM32F439xx) ||
  361:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****     defined(STM32F401xC) || defined(STM32F401xE) || defined(STM32F410Tx) || defined(STM32F410Cx) ||
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  596              	.LCFI22:
  597              		.cfi_def_cfa_register 7
  598 0006 7860     		str	r0, [r7, #4]
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 18
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 18
 
 
  374:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   HAL_StatusTypeDef status = HAL_ERROR;
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  401:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****     defined(STM32F412Cx) || defined(STM32F413xx) || defined(STM32F423xx)
  402:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****       status = FLASH_OB_DisablePCROP(pAdvOBInit->Sectors);
  626              		.loc 1 402 48
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 19
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 19
 
 
  627 0030 7B68     		ldr	r3, [r7, #4]
@@ -1119,7 +1119,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  645              		@ sp needed
  646 0046 80BD     		pop	{r7, pc}
  647              		.cfi_endproc
- 648              	.LFE134:
+ 648              	.LFE220:
  650              		.section	.text.HAL_FLASHEx_AdvOBGetConfig,"ax",%progbits
  651              		.align	1
  652              		.global	HAL_FLASHEx_AdvOBGetConfig
@@ -1127,7 +1127,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  654              		.thumb
  655              		.thumb_func
  657              	HAL_FLASHEx_AdvOBGetConfig:
- 658              	.LFB135:
+ 658              	.LFB221:
  420:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
  421:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** /**
  422:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   * @brief   Get the OBEX byte configuration
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  427:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   */
  428:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** void HAL_FLASHEx_AdvOBGetConfig(FLASH_AdvOBProgramInitTypeDef *pAdvOBInit)
  429:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** {
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 20
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 20
 
 
  659              		.loc 1 429 1
@@ -1198,12 +1198,12 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  696              	.L36:
  697 001e 00BF     		.align	2
  698              	.L35:
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 21
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 21
 
 
  699 0020 163C0240 		.word	1073888278
  700              		.cfi_endproc
- 701              	.LFE135:
+ 701              	.LFE221:
  703              		.section	.text.HAL_FLASHEx_OB_SelectPCROP,"ax",%progbits
  704              		.align	1
  705              		.global	HAL_FLASHEx_OB_SelectPCROP
@@ -1211,7 +1211,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  707              		.thumb
  708              		.thumb_func
  710              	HAL_FLASHEx_OB_SelectPCROP:
- 711              	.LFB136:
+ 711              	.LFB222:
  447:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
  448:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** /**
  449:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   * @brief  Select the Protection Mode
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  736 0014 FB71     		strb	r3, [r7, #7]
  466:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
  467:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   /* Update Option Byte */
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 22
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 22
 
 
  468:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   *(__IO uint8_t *)OPTCR_BYTE3_ADDRESS = (uint8_t)(OB_PCROP_SELECTED | optiontmp);
@@ -1294,7 +1294,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  763              	.L39:
  764 0030 173C0240 		.word	1073888279
  765              		.cfi_endproc
- 766              	.LFE136:
+ 766              	.LFE222:
  768              		.section	.text.HAL_FLASHEx_OB_DeSelectPCROP,"ax",%progbits
  769              		.align	1
  770              		.global	HAL_FLASHEx_OB_DeSelectPCROP
@@ -1302,7 +1302,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  772              		.thumb
  773              		.thumb_func
  775              	HAL_FLASHEx_OB_DeSelectPCROP:
- 776              	.LFB137:
+ 776              	.LFB223:
  472:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
  473:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** /**
  474:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   * @brief  Deselect the Protection Mode
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  484:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   */
  485:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** HAL_StatusTypeDef HAL_FLASHEx_OB_DeSelectPCROP(void)
  486:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** {
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 23
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 23
 
 
  777              		.loc 1 486 1
@@ -1378,21 +1378,21 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  821              		.cfi_def_cfa_offset 0
  822 0028 7047     		bx	lr
  823              	.L44:
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 24
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 24
 
 
  824 002a 00BF     		.align	2
  825              	.L43:
  826 002c 173C0240 		.word	1073888279
  827              		.cfi_endproc
- 828              	.LFE137:
+ 828              	.LFE223:
  830              		.section	.text.FLASH_MassErase,"ax",%progbits
  831              		.align	1
  832              		.syntax unified
  833              		.thumb
  834              		.thumb_func
  836              	FLASH_MassErase:
- 837              	.LFB138:
+ 837              	.LFB224:
  497:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** #endif /* STM32F427xx || STM32F437xx || STM32F429xx || STM32F439xx || STM32F401xC || STM32F401xE ||
  498:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****           STM32F411xE || STM32F469xx || STM32F479xx || STM32F412Zx || STM32F412Vx || STM32F412Rx ||
  499:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****           STM32F413xx || STM32F423xx */
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  539:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   */
  540:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** static void FLASH_MassErase(uint8_t VoltageRange, uint32_t Banks)
  541:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** {
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 25
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 25
 
 
  542:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   /* Check the parameters */
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  596:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   else if (VoltageRange == FLASH_VOLTAGE_RANGE_2)
  597:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   {
  598:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****     tmp_psize = FLASH_PSIZE_HALF_WORD;
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 26
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 26
 
 
  599:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   }
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  653:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   status = FLASH_WaitForLastOperation((uint32_t)FLASH_TIMEOUT_VALUE);
  654:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
  655:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   if (status == HAL_OK)
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 27
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 27
 
 
  656:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   {
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  710:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   *            @arg FLASH_BANK_2: Bank2 to be erased
  711:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   *            @arg FLASH_BANK_BOTH: Bank1 and Bank2 to be erased
  712:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   *
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 28
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 28
 
 
  713:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   * @retval HAL Status
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  767:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   *
  768:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   * @note   This function can be used only for STM32F42xxx/43xxx devices.
  769:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   *
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 29
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 29
 
 
  770:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   * @param  BootConfig specifies the Dual Bank Boot Option byte.
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  824:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
  825:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   if (status == HAL_OK)
  826:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   {
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 30
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 30
 
 
  827:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****     if ((Banks == FLASH_BANK_1) || (Banks == FLASH_BANK_BOTH))
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  881:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** {
  882:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   HAL_StatusTypeDef status = HAL_OK;
  883:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 31
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 31
 
 
  884:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   /* Check the parameters */
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  938:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   *            @arg FLASH_VOLTAGE_RANGE_2: when the device voltage range is 2.1V to 2.7V,
  939:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   *                                  the operation will be done by half word (16-bit)
  940:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   *            @arg FLASH_VOLTAGE_RANGE_3: when the device voltage range is 2.7V to 3.6V,
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 32
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 32
 
 
  941:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   *                                  the operation will be done by word (32-bit)
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  872 0028 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
  873              		.loc 1 960 56
  874 002a 1B02     		lsls	r3, r3, #8
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 33
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 33
 
 
  875              		.loc 1 960 13
@@ -1946,7 +1946,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  896              	.L46:
  897 0044 003C0240 		.word	1073888256
  898              		.cfi_endproc
- 899              	.LFE138:
+ 899              	.LFE224:
  901              		.section	.text.FLASH_Erase_Sector,"ax",%progbits
  902              		.align	1
  903              		.global	FLASH_Erase_Sector
@@ -1954,7 +1954,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  905              		.thumb
  906              		.thumb_func
  908              	FLASH_Erase_Sector:
- 909              	.LFB139:
+ 909              	.LFB225:
  962:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
  963:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** /**
  964:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   * @brief  Erase the specified FLASH memory sector
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  910              		.loc 1 981 1
  911              		.cfi_startproc
  912              		@ args = 0, pretend = 0, frame = 16
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 34
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 34
 
 
  913              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  952 002e 03D1     		bne	.L52
  997:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   {
  998:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****     tmp_psize = FLASH_PSIZE_WORD;
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 35
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 35
 
 
  953              		.loc 1 998 15
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  995 0078 044A     		ldr	r2, .L53
  996 007a 43F48033 		orr	r3, r3, #65536
  997 007e 1361     		str	r3, [r2, #16]
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 36
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 36
 
 
 1011:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** }
@@ -2121,14 +2121,14 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  1014              	.L53:
  1015 008c 003C0240 		.word	1073888256
  1016              		.cfi_endproc
- 1017              	.LFE139:
+ 1017              	.LFE225:
  1019              		.section	.text.FLASH_OB_EnableWRP,"ax",%progbits
  1020              		.align	1
  1021              		.syntax unified
  1022              		.thumb
  1023              		.thumb_func
  1025              	FLASH_OB_EnableWRP:
- 1026              	.LFB140:
+ 1026              	.LFB226:
 1012:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
 1013:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** /**
 1014:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   * @brief  Enable the write protection of the desired bank 1 sectors
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  1033              		.cfi_def_cfa_offset 8
  1034              		.cfi_offset 7, -8
  1035              		.cfi_offset 14, -4
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 37
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 37
 
 
  1036 0002 84B0     		sub	sp, sp, #16
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  1074              	.LCFI58:
  1075              		.cfi_def_cfa_offset 8
  1076 003c BD46     		mov	sp, r7
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 38
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 38
 
 
  1077              	.LCFI59:
@@ -2230,14 +2230,14 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  1083              	.L58:
  1084 0040 163C0240 		.word	1073888278
  1085              		.cfi_endproc
- 1086              	.LFE140:
+ 1086              	.LFE226:
  1088              		.section	.text.FLASH_OB_DisableWRP,"ax",%progbits
  1089              		.align	1
  1090              		.syntax unified
  1091              		.thumb
  1092              		.thumb_func
  1094              	FLASH_OB_DisableWRP:
- 1095              	.LFB141:
+ 1095              	.LFB227:
 1048:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
 1049:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** /**
 1050:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   * @brief  Disable the write protection of the desired bank 1 sectors
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
 1068:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   HAL_StatusTypeDef status = HAL_OK;
  1113              		.loc 1 1068 21
  1114 000a 0023     		movs	r3, #0
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 39
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 39
 
 
  1115 000c FB73     		strb	r3, [r7, #15]
@@ -2336,9 +2336,9 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  1152              	.L63:
  1153 003c 163C0240 		.word	1073888278
  1154              		.cfi_endproc
- 1155              	.LFE141:
+ 1155              	.LFE227:
  1157              		.section	.text.FLASH_OB_EnablePCROP,"ax",%progbits
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 40
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 40
 
 
  1158              		.align	1
@@ -2346,7 +2346,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  1160              		.thumb
  1161              		.thumb_func
  1163              	FLASH_OB_EnablePCROP:
- 1164              	.LFB142:
+ 1164              	.LFB228:
 1084:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** #endif /* STM32F40xxx || STM32F41xxx || STM32F401xx || STM32F410xx || STM32F411xE || STM32F446xx ||
 1085:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****           STM32F413xx || STM32F423xx */
 1086:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
 1108:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
 1109:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   if (status == HAL_OK)
  1189              		.loc 1 1109 6
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 41
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 41
 
 
  1190 0018 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
@@ -2440,14 +2440,14 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  1220              	.L68:
  1221 003c 163C0240 		.word	1073888278
  1222              		.cfi_endproc
- 1223              	.LFE142:
+ 1223              	.LFE228:
  1225              		.section	.text.FLASH_OB_DisablePCROP,"ax",%progbits
  1226              		.align	1
  1227              		.syntax unified
  1228              		.thumb
  1229              		.thumb_func
  1231              	FLASH_OB_DisablePCROP:
- 1232              	.LFB143:
+ 1232              	.LFB229:
 1116:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
 1117:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
 1118:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** /**
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
 1123:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   *            @arg OB_PCROP: A value between OB_PCROP_Sector0 and OB_PCROP_Sector5
 1124:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   *            @arg OB_PCROP_Sector_All
 1125:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   * @retval HAL Status
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 42
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 42
 
 
 1126:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   */
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  1273              	.L71:
 1140:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   }
 1141:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 43
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 43
 
 
 1142:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   return status;
@@ -2541,14 +2541,14 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  1288              	.L73:
  1289 0040 163C0240 		.word	1073888278
  1290              		.cfi_endproc
- 1291              	.LFE143:
+ 1291              	.LFE229:
  1293              		.section	.text.FLASH_OB_RDP_LevelConfig,"ax",%progbits
  1294              		.align	1
  1295              		.syntax unified
  1296              		.thumb
  1297              		.thumb_func
  1299              	FLASH_OB_RDP_LevelConfig:
- 1300              	.LFB144:
+ 1300              	.LFB230:
 1145:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** #endif /* STM32F401xC || STM32F401xE || STM32F411xE || STM32F446xx || STM32F412Zx || STM32F412Vx ||
 1146:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****           STM32F413xx || STM32F423xx */
 1147:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  1310 0002 84B0     		sub	sp, sp, #16
  1311              	.LCFI76:
  1312              		.cfi_def_cfa_offset 24
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 44
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 44
 
 
  1313 0004 00AF     		add	r7, sp, #0
@@ -2636,9 +2636,9 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  1350              	.L78:
  1351 0030 153C0240 		.word	1073888277
  1352              		.cfi_endproc
- 1353              	.LFE144:
+ 1353              	.LFE230:
  1355              		.section	.text.FLASH_OB_UserConfig,"ax",%progbits
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 45
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 45
 
 
  1356              		.align	1
@@ -2646,7 +2646,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  1358              		.thumb
  1359              		.thumb_func
  1361              	FLASH_OB_UserConfig:
- 1362              	.LFB145:
+ 1362              	.LFB231:
 1177:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
 1178:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** /**
 1179:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   * @brief  Program the FLASH User Option Byte: IWDG_SW / RST_STOP / RST_STDBY.
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
 1198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
 1199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   /* Check the parameters */
 1200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   assert_param(IS_OB_IWDG_SOURCE(Iwdg));
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 46
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 46
 
 
 1201:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   assert_param(IS_OB_STOP_SOURCE(Stop));
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  1427 0054 1037     		adds	r7, r7, #16
  1428              	.LCFI83:
  1429              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 47
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 47
 
 
  1430 0056 BD46     		mov	sp, r7
@@ -2771,14 +2771,14 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  1437              	.L83:
  1438 005c 143C0240 		.word	1073888276
  1439              		.cfi_endproc
- 1440              	.LFE145:
+ 1440              	.LFE231:
  1442              		.section	.text.FLASH_OB_BOR_LevelConfig,"ax",%progbits
  1443              		.align	1
  1444              		.syntax unified
  1445              		.thumb
  1446              		.thumb_func
  1448              	FLASH_OB_BOR_LevelConfig:
- 1449              	.LFB146:
+ 1449              	.LFB232:
 1218:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
 1219:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** /**
 1220:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   * @brief  Set the BOR Level.
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  1468 000a 0B4B     		ldr	r3, .L87
  1469 000c 1B78     		ldrb	r3, [r3]
  1470 000e DBB2     		uxtb	r3, r3
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 48
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 48
 
 
  1471 0010 094A     		ldr	r2, .L87
@@ -2860,14 +2860,14 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  1502              	.L87:
  1503 0038 143C0240 		.word	1073888276
  1504              		.cfi_endproc
- 1505              	.LFE146:
+ 1505              	.LFE232:
  1507              		.section	.text.FLASH_OB_GetUser,"ax",%progbits
  1508              		.align	1
  1509              		.syntax unified
  1510              		.thumb
  1511              		.thumb_func
  1513              	FLASH_OB_GetUser:
- 1514              	.LFB147:
+ 1514              	.LFB233:
 1241:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
 1242:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** /**
 1243:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   * @brief  Return the FLASH User Option Byte value.
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
 1248:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** {
  1515              		.loc 1 1248 1
  1516              		.cfi_startproc
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 49
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 49
 
 
  1517              		@ args = 0, pretend = 0, frame = 0
@@ -2917,14 +2917,14 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  1547              	.L91:
  1548 001c 003C0240 		.word	1073888256
  1549              		.cfi_endproc
- 1550              	.LFE147:
+ 1550              	.LFE233:
  1552              		.section	.text.FLASH_OB_GetWRP,"ax",%progbits
  1553              		.align	1
  1554              		.syntax unified
  1555              		.thumb
  1556              		.thumb_func
  1558              	FLASH_OB_GetWRP:
- 1559              	.LFB148:
+ 1559              	.LFB234:
 1252:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
 1253:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** /**
 1254:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   * @brief  Return the FLASH Write Protection Option Bytes value.
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  1563              		@ frame_needed = 1, uses_anonymous_args = 0
  1564              		@ link register save eliminated.
  1565 0000 80B4     		push	{r7}
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 50
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 50
 
 
  1566              	.LCFI95:
@@ -2970,14 +2970,14 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  1589              	.L95:
  1590 0014 163C0240 		.word	1073888278
  1591              		.cfi_endproc
- 1592              	.LFE148:
+ 1592              	.LFE234:
  1594              		.section	.text.FLASH_OB_GetRDP,"ax",%progbits
  1595              		.align	1
  1596              		.syntax unified
  1597              		.thumb
  1598              		.thumb_func
  1600              	FLASH_OB_GetRDP:
- 1601              	.LFB149:
+ 1601              	.LFB235:
 1262:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
 1263:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** /**
 1264:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   * @brief  Returns the FLASH Read Protection level.
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  1608              	.LCFI99:
  1609              		.cfi_def_cfa_offset 4
  1610              		.cfi_offset 7, -4
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 51
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 51
 
 
  1611 0002 83B0     		sub	sp, sp, #12
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  1649 002e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
 1289:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** }
  1650              		.loc 1 1289 1
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 52
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 52
 
 
  1651 0030 1846     		mov	r0, r3
@@ -3079,14 +3079,14 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  1666              	.L102:
  1667 003c 153C0240 		.word	1073888277
  1668              		.cfi_endproc
- 1669              	.LFE149:
+ 1669              	.LFE235:
  1671              		.section	.text.FLASH_OB_GetBOR,"ax",%progbits
  1672              		.align	1
  1673              		.syntax unified
  1674              		.thumb
  1675              		.thumb_func
  1677              	FLASH_OB_GetBOR:
- 1678              	.LFB150:
+ 1678              	.LFB236:
 1290:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
 1291:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** /**
 1292:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   * @brief  Returns the FLASH BOR level.
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  1694 0008 DBB2     		uxtb	r3, r3
  1695 000a 03F00C03 		and	r3, r3, #12
  1696 000e DBB2     		uxtb	r3, r3
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 53
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 53
 
 
 1303:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** }
@@ -3138,7 +3138,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  1710              	.L106:
  1711 001c 143C0240 		.word	1073888276
  1712              		.cfi_endproc
- 1713              	.LFE150:
+ 1713              	.LFE236:
  1715              		.section	.text.FLASH_FlushCaches,"ax",%progbits
  1716              		.align	1
  1717              		.global	FLASH_FlushCaches
@@ -3146,7 +3146,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  1719              		.thumb
  1720              		.thumb_func
  1722              	FLASH_FlushCaches:
- 1723              	.LFB151:
+ 1723              	.LFB237:
 1304:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** 
 1305:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c **** /**
 1306:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   * @brief  Flush the instruction and data caches
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
 1313:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****   {
 1314:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****     /* Disable instruction cache  */
 1315:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c ****     __HAL_FLASH_INSTRUCTION_CACHE_DISABLE();
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 54
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 54
 
 
  1743              		.loc 1 1315 5
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  1784 005e 43F48053 		orr	r3, r3, #4096
  1785 0062 1360     		str	r3, [r2]
  1786 0064 084B     		ldr	r3, .L112
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 55
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 55
 
 
  1787 0066 1B68     		ldr	r3, [r3]
@@ -3272,7 +3272,7 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  1811              	.L112:
  1812 0088 003C0240 		.word	1073888256
  1813              		.cfi_endproc
- 1814              	.LFE151:
+ 1814              	.LFE237:
  1816              		.text
  1817              	.Letext0:
  1818              		.file 2 "c:\\arm-gcc\\tools\\tools\\arm-gnu-toolchain-11.3.rel1-mingw-w64-i686-arm-none-eabi\\arm-
@@ -3282,78 +3282,78 @@ ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 1
  1822              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
  1823              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h"
  1824              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 56
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 56
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_hal_flash_ex.c
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:20     .text.HAL_FLASHEx_Erase:00000000 $t
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:26     .text.HAL_FLASHEx_Erase:00000000 HAL_FLASHEx_Erase
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:836    .text.FLASH_MassErase:00000000 FLASH_MassErase
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:908    .text.FLASH_Erase_Sector:00000000 FLASH_Erase_Sector
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1722   .text.FLASH_FlushCaches:00000000 FLASH_FlushCaches
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:185    .text.HAL_FLASHEx_Erase:000000d8 $d
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:191    .text.HAL_FLASHEx_Erase_IT:00000000 $t
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:197    .text.HAL_FLASHEx_Erase_IT:00000000 HAL_FLASHEx_Erase_IT
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:327    .text.HAL_FLASHEx_Erase_IT:000000a4 $d
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:333    .text.HAL_FLASHEx_OBProgram:00000000 $t
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:339    .text.HAL_FLASHEx_OBProgram:00000000 HAL_FLASHEx_OBProgram
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1025   .text.FLASH_OB_EnableWRP:00000000 FLASH_OB_EnableWRP
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1094   .text.FLASH_OB_DisableWRP:00000000 FLASH_OB_DisableWRP
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1299   .text.FLASH_OB_RDP_LevelConfig:00000000 FLASH_OB_RDP_LevelConfig
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1361   .text.FLASH_OB_UserConfig:00000000 FLASH_OB_UserConfig
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1448   .text.FLASH_OB_BOR_LevelConfig:00000000 FLASH_OB_BOR_LevelConfig
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:497    .text.HAL_FLASHEx_OBProgram:000000d8 $d
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:502    .text.HAL_FLASHEx_OBGetConfig:00000000 $t
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:508    .text.HAL_FLASHEx_OBGetConfig:00000000 HAL_FLASHEx_OBGetConfig
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1558   .text.FLASH_OB_GetWRP:00000000 FLASH_OB_GetWRP
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1600   .text.FLASH_OB_GetRDP:00000000 FLASH_OB_GetRDP
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1513   .text.FLASH_OB_GetUser:00000000 FLASH_OB_GetUser
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1677   .text.FLASH_OB_GetBOR:00000000 FLASH_OB_GetBOR
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:575    .text.HAL_FLASHEx_AdvOBProgram:00000000 $t
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:581    .text.HAL_FLASHEx_AdvOBProgram:00000000 HAL_FLASHEx_AdvOBProgram
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1163   .text.FLASH_OB_EnablePCROP:00000000 FLASH_OB_EnablePCROP
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1231   .text.FLASH_OB_DisablePCROP:00000000 FLASH_OB_DisablePCROP
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:651    .text.HAL_FLASHEx_AdvOBGetConfig:00000000 $t
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:657    .text.HAL_FLASHEx_AdvOBGetConfig:00000000 HAL_FLASHEx_AdvOBGetConfig
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:699    .text.HAL_FLASHEx_AdvOBGetConfig:00000020 $d
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:704    .text.HAL_FLASHEx_OB_SelectPCROP:00000000 $t
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:710    .text.HAL_FLASHEx_OB_SelectPCROP:00000000 HAL_FLASHEx_OB_SelectPCROP
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:764    .text.HAL_FLASHEx_OB_SelectPCROP:00000030 $d
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:769    .text.HAL_FLASHEx_OB_DeSelectPCROP:00000000 $t
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:775    .text.HAL_FLASHEx_OB_DeSelectPCROP:00000000 HAL_FLASHEx_OB_DeSelectPCROP
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:826    .text.HAL_FLASHEx_OB_DeSelectPCROP:0000002c $d
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:831    .text.FLASH_MassErase:00000000 $t
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:897    .text.FLASH_MassErase:00000044 $d
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:902    .text.FLASH_Erase_Sector:00000000 $t
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1015   .text.FLASH_Erase_Sector:0000008c $d
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1020   .text.FLASH_OB_EnableWRP:00000000 $t
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1084   .text.FLASH_OB_EnableWRP:00000040 $d
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1089   .text.FLASH_OB_DisableWRP:00000000 $t
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1153   .text.FLASH_OB_DisableWRP:0000003c $d
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1158   .text.FLASH_OB_EnablePCROP:00000000 $t
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1221   .text.FLASH_OB_EnablePCROP:0000003c $d
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1226   .text.FLASH_OB_DisablePCROP:00000000 $t
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1289   .text.FLASH_OB_DisablePCROP:00000040 $d
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1294   .text.FLASH_OB_RDP_LevelConfig:00000000 $t
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1351   .text.FLASH_OB_RDP_LevelConfig:00000030 $d
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1356   .text.FLASH_OB_UserConfig:00000000 $t
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1438   .text.FLASH_OB_UserConfig:0000005c $d
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1443   .text.FLASH_OB_BOR_LevelConfig:00000000 $t
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1503   .text.FLASH_OB_BOR_LevelConfig:00000038 $d
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1508   .text.FLASH_OB_GetUser:00000000 $t
-ARM GAS  C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s 			page 57
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:20     .text.HAL_FLASHEx_Erase:00000000 $t
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:26     .text.HAL_FLASHEx_Erase:00000000 HAL_FLASHEx_Erase
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:836    .text.FLASH_MassErase:00000000 FLASH_MassErase
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:908    .text.FLASH_Erase_Sector:00000000 FLASH_Erase_Sector
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1722   .text.FLASH_FlushCaches:00000000 FLASH_FlushCaches
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:185    .text.HAL_FLASHEx_Erase:000000d8 $d
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:191    .text.HAL_FLASHEx_Erase_IT:00000000 $t
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:197    .text.HAL_FLASHEx_Erase_IT:00000000 HAL_FLASHEx_Erase_IT
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:327    .text.HAL_FLASHEx_Erase_IT:000000a4 $d
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:333    .text.HAL_FLASHEx_OBProgram:00000000 $t
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:339    .text.HAL_FLASHEx_OBProgram:00000000 HAL_FLASHEx_OBProgram
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1025   .text.FLASH_OB_EnableWRP:00000000 FLASH_OB_EnableWRP
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1094   .text.FLASH_OB_DisableWRP:00000000 FLASH_OB_DisableWRP
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1299   .text.FLASH_OB_RDP_LevelConfig:00000000 FLASH_OB_RDP_LevelConfig
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1361   .text.FLASH_OB_UserConfig:00000000 FLASH_OB_UserConfig
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1448   .text.FLASH_OB_BOR_LevelConfig:00000000 FLASH_OB_BOR_LevelConfig
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:497    .text.HAL_FLASHEx_OBProgram:000000d8 $d
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:502    .text.HAL_FLASHEx_OBGetConfig:00000000 $t
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:508    .text.HAL_FLASHEx_OBGetConfig:00000000 HAL_FLASHEx_OBGetConfig
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1558   .text.FLASH_OB_GetWRP:00000000 FLASH_OB_GetWRP
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1600   .text.FLASH_OB_GetRDP:00000000 FLASH_OB_GetRDP
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1513   .text.FLASH_OB_GetUser:00000000 FLASH_OB_GetUser
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1677   .text.FLASH_OB_GetBOR:00000000 FLASH_OB_GetBOR
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:575    .text.HAL_FLASHEx_AdvOBProgram:00000000 $t
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:581    .text.HAL_FLASHEx_AdvOBProgram:00000000 HAL_FLASHEx_AdvOBProgram
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1163   .text.FLASH_OB_EnablePCROP:00000000 FLASH_OB_EnablePCROP
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1231   .text.FLASH_OB_DisablePCROP:00000000 FLASH_OB_DisablePCROP
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:651    .text.HAL_FLASHEx_AdvOBGetConfig:00000000 $t
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:657    .text.HAL_FLASHEx_AdvOBGetConfig:00000000 HAL_FLASHEx_AdvOBGetConfig
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:699    .text.HAL_FLASHEx_AdvOBGetConfig:00000020 $d
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:704    .text.HAL_FLASHEx_OB_SelectPCROP:00000000 $t
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:710    .text.HAL_FLASHEx_OB_SelectPCROP:00000000 HAL_FLASHEx_OB_SelectPCROP
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:764    .text.HAL_FLASHEx_OB_SelectPCROP:00000030 $d
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:769    .text.HAL_FLASHEx_OB_DeSelectPCROP:00000000 $t
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:775    .text.HAL_FLASHEx_OB_DeSelectPCROP:00000000 HAL_FLASHEx_OB_DeSelectPCROP
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:826    .text.HAL_FLASHEx_OB_DeSelectPCROP:0000002c $d
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:831    .text.FLASH_MassErase:00000000 $t
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:897    .text.FLASH_MassErase:00000044 $d
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:902    .text.FLASH_Erase_Sector:00000000 $t
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1015   .text.FLASH_Erase_Sector:0000008c $d
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1020   .text.FLASH_OB_EnableWRP:00000000 $t
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1084   .text.FLASH_OB_EnableWRP:00000040 $d
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1089   .text.FLASH_OB_DisableWRP:00000000 $t
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1153   .text.FLASH_OB_DisableWRP:0000003c $d
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1158   .text.FLASH_OB_EnablePCROP:00000000 $t
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1221   .text.FLASH_OB_EnablePCROP:0000003c $d
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1226   .text.FLASH_OB_DisablePCROP:00000000 $t
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1289   .text.FLASH_OB_DisablePCROP:00000040 $d
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1294   .text.FLASH_OB_RDP_LevelConfig:00000000 $t
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1351   .text.FLASH_OB_RDP_LevelConfig:00000030 $d
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1356   .text.FLASH_OB_UserConfig:00000000 $t
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1438   .text.FLASH_OB_UserConfig:0000005c $d
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1443   .text.FLASH_OB_BOR_LevelConfig:00000000 $t
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1503   .text.FLASH_OB_BOR_LevelConfig:00000038 $d
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1508   .text.FLASH_OB_GetUser:00000000 $t
+ARM GAS  C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s 			page 57
 
 
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1548   .text.FLASH_OB_GetUser:0000001c $d
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1553   .text.FLASH_OB_GetWRP:00000000 $t
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1590   .text.FLASH_OB_GetWRP:00000014 $d
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1595   .text.FLASH_OB_GetRDP:00000000 $t
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1667   .text.FLASH_OB_GetRDP:0000003c $d
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1672   .text.FLASH_OB_GetBOR:00000000 $t
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1711   .text.FLASH_OB_GetBOR:0000001c $d
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1716   .text.FLASH_FlushCaches:00000000 $t
-C:\Users\eduap\AppData\Local\Temp\ccemTBgI.s:1812   .text.FLASH_FlushCaches:00000088 $d
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1548   .text.FLASH_OB_GetUser:0000001c $d
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1553   .text.FLASH_OB_GetWRP:00000000 $t
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1590   .text.FLASH_OB_GetWRP:00000014 $d
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1595   .text.FLASH_OB_GetRDP:00000000 $t
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1667   .text.FLASH_OB_GetRDP:0000003c $d
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1672   .text.FLASH_OB_GetBOR:00000000 $t
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1711   .text.FLASH_OB_GetBOR:0000001c $d
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1716   .text.FLASH_FlushCaches:00000000 $t
+C:\Users\eduap\AppData\Local\Temp\cchW2zTb.s:1812   .text.FLASH_FlushCaches:00000088 $d
 
 UNDEFINED SYMBOLS
 FLASH_WaitForLastOperation
