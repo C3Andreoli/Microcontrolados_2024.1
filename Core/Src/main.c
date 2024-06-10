@@ -123,16 +123,17 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   { 
-    buffer[0] = 0;
+
       if(answer==0){
-        sprintf(writeBuffer, "Digite um comando: \r \n");
+        sprintf(buffer, "Digite um comando: \r \n");
         CDC_Transmit_FS(buffer,strlen(buffer));
         answer=1;
       }
-      else if (gUSBRxBuffer[0] == 84 || gUSBRxBuffer[0] ==  116){
+      else if (buffer[0] == 84 || buffer[0] ==  116){
         sprintf(buffer, "duty %d : temp %d  \r \n", kp ,temp);
         CDC_Transmit_FS(buffer,strlen(buffer));
         answer=0;
+        buffer[0] = 0;
       }
 
       if(button_release(GPIOB,BTN3_Pin,0)){
