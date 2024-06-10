@@ -62,6 +62,7 @@ uint8_t Kd = 1;
 uint16_t integrationSum=0;
 float duty=0;
 bool enablePID = false;
+uint8_t answer=0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -121,19 +122,33 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
-  {
-    if(button_release(GPIOB,BTN3_Pin,0)){
-      enablePID = !enablePID;
-    }
-    /* ON / OFF -- START User Code */
-    if (temp>32 && !enablePID){
-      TIM3 -> CCR1 = TIM3 -> ARR;
-      HAL_Delay(25);
-    }
-    else if (temp < 28 && !enablePID){
-      TIM3 -> CCR1 = 0;
-      HAL_Delay(25);
-    }
+  { 
+    buffer[0] = 0;
+      if(answer==0){
+        sprintf(writeBuffer, "Digite um comando: \r \n");
+        CDC_Transmit_FS(buffer,strlen(buffer));
+        answer=1;
+      }
+      else if (gUSBRxBuffer[0] == 84 || gUSBRxBuffer[0] ==  116){
+        sprintf(buffer, "duty %d : temp %d  \r \n", kp ,temp);
+        CDC_Transmit_FS(buffer,strlen(buffer));
+        answer=0;
+      }
+
+      if(button_release(GPIOB,BTN3_Pin,0)){
+        enablePID = !enablePID;
+      }
+      
+      /* ON / OFF -- START User Code */
+      if (temp>32 && !enablePID){
+        TIM3 -> CCR1 = TIM3 -> ARR;
+        HAL_Delay(25);
+      }
+      else if (temp < 28 && !enablePID){
+        TIM3 -> CCR1 = 0;
+        HAL_Delay(25);
+      }
+    
     /* ON / OFF -- END User Code */
 
   
@@ -408,8 +423,6 @@ void HAL_TIM_PeriodElapsedCallback (TIM_HandleTypeDef * htim){
   read = HAL_ADC_GetValue(&hadc1);
   temp = 47.937 * log(3.3 * read/ 4095) + 2;
 
-  sprintf(buffer, "duty %d : temp %d  \r \n", kp ,temp);
-  CDC_Transmit_FS(buffer,strlen(buffer));
   if(enablePID){
   
     err = ref - read;
